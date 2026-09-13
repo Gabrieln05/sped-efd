@@ -4,6 +4,31 @@ All Notable changes to `sped-efd` will be documented in this file.
 
 Todas as atualizações a partir de 30/05/206 devem observar os principios [Mantendo o CHANGELOG](http://keepachangelog.com/).
 
+## [Fork Artemis] Onda 3 — 2026-09-13
+
+### Added
+- Leiautes **018** (2024) e **019** (2025), derivados do 020 auditado por
+  `tools/leiaute/derivar_referencia.php`, desfazendo só as mudanças
+  documentadas (`tools/leiaute/deltas/`, cada uma com a fonte):
+  - 019: sem `CAP_TANQUE` no 1310 e sem o valor 2 (DUIMP) no C120;
+  - 018: sem `DED` no D700 e no D750, com `FIN_DOCe`/`TIP_FAT` opcionais e
+    `VL_PIS`/`VL_COFINS` do D750 obrigatórios.
+- Referências `docs/leiautes/referencia/018.json` e `019.json`, conferidas na
+  suíte como a do 020.
+- Arquivo para o PVA de cada leiaute (`tests/fixtures/pva/efd-icms-ipi-NNN.txt`);
+  no 018 e no 019 a importação usa DI.
+
+### Removed
+- Leiaute 017 (pasta e vigência): não auditado e contaminado com campos de
+  leiautes posteriores. `Vigencia::paraPeriodo()` recusa períodos anteriores a 2024.
+- `examples/cria_lista_layout_vigencia.php`, que regravava o `vigencias.json`
+  com a lista antiga.
+
+### Changed
+- O golden do exemplo do upstream passou a usar o 020. O TXT é o mesmo; os
+  erros ganharam `H001.IND_MOV` e `H010.IND_PROP` recusando inteiro, porque o
+  020 corrigiu esses campos para o tipo C.
+
 ## [Fork Artemis] Onda 2 — 2026-09-13
 
 Leiaute 020 da EFD ICMS/IPI (períodos de 01/01/2026 a 31/12/2026), gerado a

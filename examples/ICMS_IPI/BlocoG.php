@@ -5,7 +5,7 @@ require_once '../../bootstrap.php';
 
 use NFePHP\EFD\Blocks\ICMSIPI\BlockG;
 
-$b = new BlockG('017');
+$b = new BlockG('020');
 $std = new stdClass();
 
 foreach ($b->elements as $key => $element) {

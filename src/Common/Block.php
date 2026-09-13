@@ -37,7 +37,7 @@ abstract class Block implements BlockInterface
     protected $grupo;
 
     /**
-     * @param string $layout código do leiaute com 3 dígitos (ex.: '017');
+     * @param string $layout código do leiaute com 3 dígitos (ex.: '020');
      *                       para escolher pela data use Vigencia::paraPeriodo()
      * @throws \InvalidArgumentException leiaute não disponível para o grupo
      */

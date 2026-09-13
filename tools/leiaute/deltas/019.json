@@ -1,0 +1,14 @@
+{
+    "leiaute": "019",
+    "_sobre": "Leiaute 019 (01/01/2025 a 31/12/2025) derivado do 020 auditado, desfazendo o que a NT 2025.001 v1.0 (leiaute 020) mudou no arquivo. Fontes: Anexo I da NT 2025.001 e histórico de versões do Guia Prático 3.2.3 (3.1.9 a 3.2.2). Mudanças sem efeito no arquivo nem na validação da biblioteca não entram (troca N/C do D700.SER, regra C100 x C190, orientações da Reforma).",
+    "registros": {
+        "1310": {
+            "remover_campos": ["CAP_TANQUE"],
+            "_fonte": "NT 2025.001, Anexo I: campo 11 CAP_TANQUE incluído no leiaute 020"
+        },
+        "C120": {
+            "campos": { "COD_DOC_IMP": { "valores": ["0", "1"] } },
+            "_fonte": "NT 2025.001, Anexo I: valor 2 (DUIMP) incluído no campo COD_DOC_IMP no leiaute 020"
+        }
+    }
+}

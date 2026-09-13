@@ -1,3 +1,6 @@
 [
-    "[0000] campo: COD_VER [001] diferente do leiaute dos blocos [017]."
+    "[0000] campo: COD_VER [001] diferente do leiaute dos blocos [020].",
+    "[H001] campo: IND_MOV deve ser uma string.",
+    "[H010] campo: IND_PROP deve ser uma string.",
+    "[H010] campo: IND_PROP deve ser uma string."
 ]

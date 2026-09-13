@@ -29,6 +29,26 @@ php tools/leiaute/comparar.php docs/leiautes/referencia/020.json storage/layouts
 O passo 4 também roda na suíte (`tests/Leiautes/ReferenciaOficialTest.php`)
 para todo leiaute com referência em `docs/leiautes/referencia/`.
 
+## Leiaute derivado (018, 019)
+
+Leiaute anterior ao auditado não é extraído de PDF antigo: a referência sai
+da do leiaute seguinte (já com os ajustes dele), desfazendo só as mudanças
+documentadas no histórico do Guia Prático e nas Notas Técnicas.
+
+```bash
+php tools/leiaute/derivar_referencia.php docs/leiautes/referencia/020.json \
+    tools/leiaute/ajustes/020.json tools/leiaute/deltas/019.json docs/leiautes/referencia/019.json
+php tools/leiaute/gerar_leiaute.php docs/leiautes/referencia/019.json \
+    storage/layouts/ICMSIPI/v020 storage/layouts/ICMSIPI/v019 tools/leiaute/ajustes/019.json
+php tools/leiaute/comparar.php docs/leiautes/referencia/019.json storage/layouts/ICMSIPI/v019 \
+    --ajustes=tools/leiaute/ajustes/019.json
+```
+
+`deltas/NNN.json` diz, por registro, os campos a remover (`remover_campos`) e
+os atributos a trocar (`campos`, pelo nome), cada mudança com `_fonte`. O
+gerador não aperta regex que já aceita os valores válidos; restrição que o
+leiaute anterior não tinha (ex.: DUIMP no C120) entra como ajuste `json`.
+
 ## Como a extração funciona
 
 Em parte das tabelas o PDF sai embaralhado: a descrição fica fora do lugar,

@@ -1,0 +1,16 @@
+{
+    "_sobre": "Decisões manuais do leiaute 018 sobre a referência derivada do 019 (tools/leiaute/deltas/018.json). A pasta v018 é gerada a partir da v019.",
+    "sem_auditoria": {
+        "B035": "Bloco B (ISS do DF): tabela ilegível na NT e no Guia; mantida a estrutura do 017"
+    },
+    "campos": {
+        "D700": {
+            "23": { "json": { "required": false }, "_fonte": "Guia 3.2.3, histórico 3.1.7: FIN_DOCe só passa a obrigatório no leiaute 019" },
+            "24": { "json": { "required": false }, "_fonte": "Guia 3.2.3, histórico 3.1.7: TIP_FAT só passa a obrigatório no leiaute 019" }
+        },
+        "D750": {
+            "15": { "json": { "required": true }, "_fonte": "Guia 3.2.3, histórico 3.1.7: VL_PIS passa de O para OC só no leiaute 019" },
+            "16": { "json": { "required": true }, "_fonte": "Guia 3.2.3, histórico 3.1.7: VL_COFINS passa de O para OC só no leiaute 019" }
+        }
+    }
+}

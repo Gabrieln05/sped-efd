@@ -20,10 +20,16 @@ final class VigenciaTest extends TestCase
         new BlockC('099');
     }
 
+    public function testLeiauteQueSaiuDoVigenciasLancaExcecao(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        new BlockC('017');
+    }
+
     public function testLeiauteSemOsTresDigitosLancaExcecao(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new Block0('17');
+        new Block0('20');
     }
 
     public function testGrupoDesconhecidoLancaExcecao(): void
@@ -34,18 +40,20 @@ final class VigenciaTest extends TestCase
 
     public function testPeriodoDentroDaVigenciaDevolveOLeiaute(): void
     {
-        $this->assertSame('017', Vigencia::paraPeriodo(Vigencia::ICMSIPI, new DateTimeImmutable('2023-06-01')));
+        $this->assertSame('018', Vigencia::paraPeriodo(Vigencia::ICMSIPI, new DateTimeImmutable('2024-12-01')));
+        $this->assertSame('019', Vigencia::paraPeriodo(Vigencia::ICMSIPI, new DateTimeImmutable('2025-01-01')));
+        $this->assertSame('020', Vigencia::paraPeriodo(Vigencia::ICMSIPI, new DateTimeImmutable('2026-06-01')));
     }
 
     public function testPeriodoSemLeiauteDisponivelLancaExcecao(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        Vigencia::paraPeriodo(Vigencia::ICMSIPI, new DateTimeImmutable('2008-06-01'));
+        Vigencia::paraPeriodo(Vigencia::ICMSIPI, new DateTimeImmutable('2023-06-01'));
     }
 
     public function testRegistroSemJsonNoLeiauteLancaExcecao(): void
     {
-        $vigencia = Vigencia::carregar(Vigencia::ICMSIPI, '017');
+        $vigencia = Vigencia::carregar(Vigencia::ICMSIPI, '020');
         $vigencia->path = sys_get_temp_dir() . '/sped-efd-leiaute-inexistente';
         $this->expectException(RuntimeException::class);
         new Z0001((object) ['ind_mov' => 1], $vigencia);
@@ -53,16 +61,16 @@ final class VigenciaTest extends TestCase
 
     public function testCodVerDiferenteDoLeiauteDosBlocosGeraErro(): void
     {
-        $b0 = new Block0('017');
-        $b0->z0000($this->dados0000('016'));
-        $this->assertContains('[0000] campo: COD_VER [016] diferente do leiaute dos blocos [017].', $b0->errors);
+        $b0 = new Block0('020');
+        $b0->z0000($this->dados0000('019'));
+        $this->assertContains('[0000] campo: COD_VER [019] diferente do leiaute dos blocos [020].', $b0->errors);
     }
 
     public function testCodVerNaoInformadoAssumeOLeiauteDosBlocos(): void
     {
-        $b0 = new Block0('017');
+        $b0 = new Block0('020');
         $b0->z0000($this->dados0000(null));
-        $this->assertStringStartsWith('|0000|017|', $b0->get());
+        $this->assertStringStartsWith('|0000|020|', $b0->get());
     }
 
     private function dados0000(?string $codVer): stdClass
@@ -72,8 +80,8 @@ final class VigenciaTest extends TestCase
             $std->cod_ver = $codVer;
         }
         $std->cod_fin = 0;
-        $std->dt_ini = '01062023';
-        $std->dt_fin = '30062023';
+        $std->dt_ini = '01062026';
+        $std->dt_fin = '30062026';
         $std->nome = 'EMPRESA DE TESTE LTDA';
         $std->cnpj = '00258807000129';
         $std->uf = 'SP';

@@ -1,0 +1,9 @@
+{
+    "IND_DAD": {
+        "type": "string",
+        "regex": "^(0|1)$",
+        "required": false,
+        "info": "",
+        "format": ""
+    }
+}

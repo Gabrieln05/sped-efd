@@ -1,0 +1,11 @@
+{
+    "_sobre": "Decisões manuais do leiaute 019 sobre a referência derivada do 020 (tools/leiaute/deltas/019.json). A pasta v019 é gerada a partir da v020.",
+    "sem_auditoria": {
+        "B035": "Bloco B (ISS do DF): tabela ilegível na NT e no Guia; mantida a estrutura do 017"
+    },
+    "campos": {
+        "C120": {
+            "02": { "json": { "regex": "^(0|1)$" }, "_fonte": "valor 2 (DUIMP) só a partir do leiaute 020; o gerador não aperta regex que já aceita os valores válidos" }
+        }
+    }
+}

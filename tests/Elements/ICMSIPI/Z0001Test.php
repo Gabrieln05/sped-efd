@@ -11,7 +11,7 @@ class Z0001Test extends TestCase
 {
     private function vigencia(): stdClass
     {
-        return Vigencia::carregar(Vigencia::ICMSIPI, '017');
+        return Vigencia::carregar(Vigencia::ICMSIPI, '020');
     }
 
     public function testZ0001(): void

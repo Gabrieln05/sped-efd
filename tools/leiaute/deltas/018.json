@@ -1,0 +1,14 @@
+{
+    "leiaute": "018",
+    "_sobre": "Leiaute 018 (01/01/2024 a 31/12/2024) derivado do 019, desfazendo o que a NT 2024.001 v1.0 (leiaute 019, Ato COTEPE/ICMS 131/2024) mudou no arquivo. Fonte: Guia Prático 3.2.3, subseção 14 e histórico de versões 3.1.7 e 3.1.8. Mudanças só de validação cruzada (D700.VL_DOC, D100/D130 com CT-e Simplificado) não entram.",
+    "registros": {
+        "D700": {
+            "remover_campos": ["DED"],
+            "_fonte": "Guia 3.2.3, histórico 3.1.7: campo 32 DED incluído no leiaute 019"
+        },
+        "D750": {
+            "remover_campos": ["DED"],
+            "_fonte": "Guia 3.2.3, histórico 3.1.7: campo 17 DED incluído no leiaute 019"
+        }
+    }
+}

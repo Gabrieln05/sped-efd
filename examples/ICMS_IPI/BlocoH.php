@@ -5,7 +5,7 @@ require_once '../../bootstrap.php';
 
 use NFePHP\EFD\Blocks\ICMSIPI\BlockH;
 
-$b = new BlockH('017');
+$b = new BlockH('020');
 $std = new stdClass();
 
 foreach ($b->elements as $key => $element) {
@@ -16,7 +16,7 @@ foreach ($b->elements as $key => $element) {
 }
 
 try {
-    $bH = new BlockH('017');
+    $bH = new BlockH('020');
 
     $std = new \stdClass();
     $std->IND_MOV = 0;

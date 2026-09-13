@@ -16,7 +16,7 @@ try {
     //Construção do Bloco 0 - Bloco Inicial
     //IMPORTANTE: a ORDEM afeta o resultado portanto é muito importante
     //carregar os elementos na ordem correta
-    $b0 = new Block0('017');
+    $b0 = new Block0('020');
 
     //0000 Obrigatório [1:1]
     //Abertura do Arquivo Digital e Identificação da entidade
@@ -103,7 +103,7 @@ try {
     $efd->add($b0);
 
 
-    $bH = new BlockH('017');
+    $bH = new BlockH('020');
 
     $std = new stdClass();
     $std->IND_MOV = 0;
@@ -150,7 +150,7 @@ try {
     //adicionando o bloco 0 ao EFD
     $efd->add($bH);
 
-    $b1 = new Block1('017');
+    $b1 = new Block1('020');
 
     $std = new \stdClass;
     $std->IND_MOV = '0';

@@ -56,10 +56,10 @@ final class Documentos
     }
 
     /**
-     * Chave de 44 dígitos de documento emitido em SP em janeiro de 2026.
+     * Chave de 44 dígitos de documento emitido em SP em janeiro do ano (dois dígitos).
      */
-    public static function chave(string $cnpj, int $modelo, int $serie, int $numero, int $codigo): string
+    public static function chave(string $cnpj, int $modelo, int $serie, int $numero, int $codigo, int $ano = 26): string
     {
-        return Keys::build(35, 26, 1, $cnpj, $modelo, $serie, $numero, 1, $codigo);
+        return Keys::build(35, $ano, 1, $cnpj, $modelo, $serie, $numero, 1, $codigo);
     }
 }

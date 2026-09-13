@@ -7,7 +7,7 @@ use stdClass;
 use NFePHP\EFD\Blocks\ICMSIPI\Block0;
 
 //grava json das propriedades dos elementos dos blocos para a versão 017
-$b = new Block0('017');
+$b = new Block0('020');
 $std = new stdClass();
 foreach ($b->elements as $key => $element) {
     try {
@@ -18,7 +18,7 @@ foreach ($b->elements as $key => $element) {
 
 
 try {
-    $b0 = new Block0('017');
+    $b0 = new Block0('020');
 
      //0000 Obrigatório [1:1]
     //Abertura do Arquivo Digital e Identificação da entidade

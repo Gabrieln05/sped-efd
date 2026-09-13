@@ -13,8 +13,9 @@ use stdClass;
  * dados. É a base do teste de caracterização: a saída gravada em
  * tests/fixtures/golden/ só pode mudar de propósito.
  *
- * No exemplo original os blocos H e 1 eram criados sem leiaute e caíam no 017;
- * desde a Onda 1 o leiaute é obrigatório e vai explícito.
+ * No exemplo original os blocos eram do leiaute 017 (H e 1 sem leiaute, caindo
+ * no 017). O 017 saiu na Onda 3 e o cenário passou a usar o 020, com os mesmos
+ * dados.
  */
 final class ExemploEFDICMS
 {
@@ -22,7 +23,7 @@ final class ExemploEFDICMS
     {
         $efd = new EFDICMS();
 
-        $b0 = new Block0('017');
+        $b0 = new Block0('020');
 
         $std = new stdClass();
         $std->cod_ver = '001';
@@ -89,7 +90,7 @@ final class ExemploEFDICMS
 
         $efd->add($b0);
 
-        $bH = new BlockH('017');
+        $bH = new BlockH('020');
 
         $std = new stdClass();
         $std->IND_MOV = 0;
@@ -131,7 +132,7 @@ final class ExemploEFDICMS
 
         $efd->add($bH);
 
-        $b1 = new Block1('017');
+        $b1 = new Block1('020');
 
         $std = new stdClass();
         $std->IND_MOV = '0';
