@@ -7,7 +7,7 @@
         "sped",
         "nfephp"
     ],
-    "homepage": "https://github.com/nfephp-org/sped-efd",
+    "homepage": "https://github.com/Gabrieln05/sped-efd",
     "license": [
         "GPL-3.0-or-later",
         "LGPL-3.0-or-later",
@@ -50,16 +50,14 @@
         }
     ],
     "require": {
-        "php": ">= 7.4",
+        "php": "^8.4",
         "ext-json": "*",
         "nfephp-org/sped-common": "^5.1.0"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.6",
-        "phpunit/phpunit": "^9.3",
-        "scrutinizer/ocular": "^1.8",
-        "phpstan/phpstan": "^1.4",
-        "sebastian/phpcpd": "^6.0"
+        "squizlabs/php_codesniffer": "^3.13",
+        "phpunit/phpunit": "^12.5",
+        "phpstan/phpstan": "^2.1"
     },
     "autoload": {
         "psr-4": {
@@ -75,9 +73,9 @@
         "phpunit": "phpunit",
         "phpcbf": "vendor/bin/phpcbf --standard=psr2 src/ ",
         "phpcs": "vendor/bin/phpcs --standard=psr2 src/",
-        "phpstan": "vendor/bin/phpstan analyse src/ --level 7",
+        "phpstan": "phpstan analyse --memory-limit=1G --no-progress",
         "test": "phpunit --colors=always",
-        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+        "test-coverage": "phpunit --colors=always --coverage-clover build/logs/clover.xml"
     },
     "extra": {
         "branch-alias": {

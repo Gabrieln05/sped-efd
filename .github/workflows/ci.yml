@@ -8,29 +8,36 @@ on:
         branches:
             - master
 
+    workflow_dispatch:
+
 jobs:
     testsuite:
-        name: Testes Automatizados
+        name: PHP ${{ matrix.php-version }}
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
             matrix:
-                php-version: ['7.4', '8.0', '8.1']
+                php-version: ['8.4', '8.5']
 
         steps:
+            - name: checkout
+              uses: actions/checkout@v4
+
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php-version }}
-                  extensions: mbstring, intl, mysql, zlib, dom, openssl, soap, json, simplexml, libxml
-
-            - name: checkout
-              uses: actions/checkout@v2
+                  extensions: mbstring, intl, curl, zlib, dom, openssl, soap, json, simplexml, libxml
+                  coverage: none
 
             - name: Composer Install
               run: |
-                composer install --no-progress -o --no-ansi --no-interaction
+                composer install --no-progress --no-ansi --no-interaction
 
-            - name: Rodando PHPUnit
+            - name: PHPUnit
               run: |
                 composer test
+
+            - name: PHPStan
+              run: |
+                composer phpstan
