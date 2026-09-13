@@ -52,115 +52,14 @@ class Z0200 extends Element
     const LEVEL = 2;
     const PARENT = '';
 
-    protected $parameters = [
-        'COD_ITEM' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código do item',
-            'format'   => ''
-        ],
-        'DESCR_ITEM' => [
-            'type'     => 'string',
-            'regex'    => '^.{3,255}$',
-            'required' => true,
-            'info'     => 'Descrição do item',
-            'format'   => ''
-        ],
-        'COD_BARRA' => [
-            'type'     => 'string',
-            'regex'    => '^(SEM GTIN)|([0-9]{8,14}|\-)$',
-            'required' => false,
-            'info'     => 'Representação alfanumérico do código de barra do produto, se houver',
-            'format'   => ''
-        ],
-        'COD_ANT_ITEM' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,6}$',
-            'required' => false,
-            'info'     => 'Código anterior do item com relação à última informação anterior',
-            'format'   => ''
-        ],
-        'UNID_INV' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,6}$',
-            'required' => true,
-            'info'     => 'Unidade de medida utilizada na quantificação de estoques.',
-            'format'   => ''
-        ],
-        'TIPO_ITEM' => [
-            'type'     => 'string',
-            'regex'    => '^[0-9]{2}$',
-            'required' => true,
-            'info'     => 'Tipo do item – Atividades Industriais, Comerciais e Serviços:'
-            . '00 – Mercadoria para Revenda;'
-            . '01 – Matéria-prima;'
-            . '02 – Embalagem;'
-            . '03 – Produto em Processo;'
-            . '04 – Produto Acabado;'
-            . '05 – Subproduto;'
-            . '06 – Produto Intermediário;'
-            . '07 – Material de Uso e Consumo;'
-            . '08 – Ativo Imobilizado;'
-            . '09 – Serviços;'
-            . '10 – Outros insumos;'
-            . '99 – Outras',
-            'format'   => ''
-        ],
-        'COD_NCM' => [
-            'type'     => 'string',
-            'regex'    => '^([0-9]{8})|([0-9]{2})$',
-            'required' => false,
-            'info'     => 'Código da Nomenclatura Comum do Mercosul',
-            'format'   => ''
-        ],
-        'EX_IPI' => [
-            'type'     => 'string',
-            'regex'    => '^[0-9]{1,3}$',
-            'required' => false,
-            'info'     => 'Código EX, conforme a TIPI',
-            'format'   => ''
-        ],
-        'COD_GEN' => [
-            'type'     => 'string',
-            'regex'    => '^[0-9]{2}$',
-            'required' => false,
-            'info'     => 'Código do gênero do item, conforme a Tabela 4.2.1',
-            'format'   => ''
-        ],
-        'COD_LST' => [
-            'type'     => 'string',
-            'regex'    => '^([0-9]{2}\.[0-9]{2})$',
-            'required' => false,
-            'info'     => 'Código do serviço conforme lista do Anexo I da '
-            . 'Lei Complementar Federal nº 116/03.',
-            'format'   => ''
-        ],
-        'ALIQ_ICMS' => [
-            'type'     => 'numeric',
-            'regex'    => '^(\d*\.)?\d+$',
-            'required' => false,
-            'info'     => 'Alíquota de ICMS aplicável ao item nas operações internas',
-            'format'   => '6v2'
-        ],
-        'CEST' => [
-            'type'     => 'string',
-            'regex'    => '^[0-9]{7}$',
-            'required' => false,
-            'info'     => 'Código Especificador da Substituição Tributária',
-            'format'   => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

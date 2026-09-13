@@ -15,26 +15,14 @@ class K010 extends Element
     const LEVEL = 1;
     const PARENT = '';
 
-    protected $parameters = [
-        'ind_tp_leiaute' => [
-            'type'     => 'numeric',
-            'regex'    => '^[0-2]{1}$',
-            'required' => true,
-            'info'     => 'Indicador de tipo de leiaute adotado: 0-Leiaute simplificado, '
-                . '1-Leiaute completo, 2-Leiaute restrito aos saldos de estoque',
-            'format'   => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

@@ -35,32 +35,14 @@ class K215 extends Element
     const LEVEL = 4;
     const PARENT = 'K210';
 
-    protected $parameters = [
-        'COD_ITEM_DES' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código do item de destino (campo 02 do Registro 0200)',
-            'format'   => ''
-        ],
-        'QTD_DES' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Quantidade de destino – entrada em estoque',
-            'format'   => '15v6'
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

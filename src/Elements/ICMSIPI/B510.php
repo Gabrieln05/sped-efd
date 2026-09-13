@@ -11,59 +11,14 @@ class B510 extends Element
     const LEVEL = 3;
     const PARENT = 'B500';
 
-    protected $parameters = [
-        'IND_PROF' => [
-            'type'     => 'string',
-            'regex'    => '^[0|1]$',
-            'required' => true,
-            'info'     => 'Indicador de habilitação: '
-            .'0- Profissional habilitado '
-            .'1- Profissional não habilitado',
-            'format'   => ''
-        ],
-        'IND_ESC' => [
-            'type'     => 'string',
-            'regex'    => '^[0|1]$',
-            'required' => true,
-            'info'     => 'Indicador de escolaridade: '
-            .'0- Nível superior '
-            .'1- Nível médio',
-            'format'   => ''
-        ],
-        'IND_SOC' => [
-            'type'     => 'string',
-            'regex'    => '^[0|1]$',
-            'required' => true,
-            'info'     => 'Indicador de participação societária: '
-            .'0- Sócio '
-            .'1- Não sócio',
-            'format'   => ''
-        ],
-        'CPF' => [
-            'type'     => 'string',
-            'regex'    => '^\d{11}$',
-            'required' => true,
-            'info'     => 'Número de inscrição do profissional no CPF.',
-            'format'   => ''
-        ],
-        'NOME' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,100}$',
-            'required' => true,
-            'info'     => 'Nome do profissional',
-            'format'   => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

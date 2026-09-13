@@ -19,7 +19,7 @@ foreach ($bD->elements as $key => $element) {
 
 
 try {
-    $bD = new BlockD();
+    $bD = new BlockD('017');
 
     $std = new stdClass();
     $std->IND_MOV = 0;

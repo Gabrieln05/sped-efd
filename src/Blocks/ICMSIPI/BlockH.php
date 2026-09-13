@@ -36,7 +36,7 @@ final class BlockH extends Block
         'h030' => ['class' => Elements\H030::class, 'level' => 4, 'type' => 'single'],
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'ICMSIPI';
         parent::__construct($layout);

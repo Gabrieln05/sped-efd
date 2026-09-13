@@ -11,88 +11,14 @@ class Z1320 extends Element
     const LEVEL = 4;
     const PARENT = '1310';
 
-    protected $parameters = [
-        'NUM_BICO' => [
-            'type'     => 'integer',
-            'regex'    => '^\d+$',
-            'required' => true,
-            'info'     => 'Bico Ligado à Bomba',
-            'format'   => ''
-        ],
-        'NR_INTERV' => [
-            'type'     => 'integer',
-            'regex'    => '^\d+$',
-            'required' => false,
-            'info'     => 'Número da intervenção',
-            'format'   => ''
-        ],
-        'MOT_INTERV' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,50}$',
-            'required' => false,
-            'info'     => 'Motivo da Intervenção',
-            'format'   => ''
-        ],
-        'NOM_INTERV' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,30}$',
-            'required' => false,
-            'info'     => 'Nome do Interventor',
-            'format'   => ''
-        ],
-        'CNPJ_INTERV' => [
-            'type'     => 'integer',
-            'regex'    => '^[0-9]{14}$',
-            'required' => false,
-            'info'     => 'CNPJ da empresa responsável pela intervenção',
-            'format'   => ''
-        ],
-        'CPF_INTERV' => [
-            'type'     => 'integer',
-            'regex'    => '^[0-9]{11}$',
-            'required' => false,
-            'info'     => 'CPF do técnico responsável pela intervenção',
-            'format'   => ''
-        ],
-        'VAL_FECHA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor da leitura final do contador, no fechamento do bico.',
-            'format'   => '15v3'
-        ],
-        'VAL_ABERT' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor da leitura inicial do contador, na abertura do bico.',
-            'format'   => '15v3'
-        ],
-        'VOL_AFERI' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => false,
-            'info'     => 'Aferições da Bomba, em litros',
-            'format'   => '15v3'
-        ],
-        'VOL_VENDAS' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Vendas (08 – 09 - 10 ) do bico , em litros',
-            'format'   => '15v3'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

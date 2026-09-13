@@ -42,41 +42,14 @@ class Z0210 extends Element
     const LEVEL = 3;
     const PARENT = '0200';
 
-    protected $parameters = [
-        'COD_ITEM_COMP' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código  do  item  componente/insumo  (campo 02 do Registro 0200)',
-            'format'   => ''
-        ],
-        'QTD_COMP' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Quantidade do item componente/insumo para se produzir'
-                . ' uma unidade do item composto/resultante',
-            'format'   => '15v6'
-        ],
-        'PERDA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Perda/quebra normal percentual do insumo/componente '
-                . 'para se produzir uma unidade do item composto/resultante',
-            'format'   => '15v4'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

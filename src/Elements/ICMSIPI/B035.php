@@ -11,64 +11,14 @@ class B035 extends Element
     const LEVEL = 3;
     const PARENT = 'B030';
 
-    protected $parameters = [
-        'VL_CONT_P' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Parcela correspondente ao "V alor Contábil" referente à combinação '
-            .'da alíquota e item da lista',
-            'format'   => '15v2'
-        ],
-        'VL_BC_ISS_P' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Parcela correspondente ao "Valor da base de cálculo do ISS" referente '
-            .'à combinação da alíquota e item da lista',
-            'format'   => '15v2'
-        ],
-        'ALIQ_ISS' => [
-            'type'     => 'integer',
-            'regex'    => '^[0-5]{1}$',
-            'required' => true,
-            'info'     => 'Alíquota do ISS',
-            'format'   => ''
-        ],
-        'VL_ISS_P' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Parcela correspondente ao "Valor do ISS" referente à combinação da '
-            .'alíquota e item da lista',
-            'format'   => '15v2'
-        ],
-        'VL_ISNT_ISS_P' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Parcela correspondente ao "Valor das operações isentas ou não-tributadas '
-            .'pelo ISS" referente à combinação da alíquota e item da lista',
-            'format'   => '15v2'
-        ],
-        'COD_SERV' => [
-            'type'     => 'string',
-            'regex'    => '^.{4}$',
-            'required' => true,
-            'info'     => 'Item da lista de serviços, conforme Tabela 4.6.3.',
-            'format'   => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

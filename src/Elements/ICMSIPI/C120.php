@@ -18,53 +18,14 @@ class C120 extends Element
     const LEVEL = 3;
     const PARENT = 'C100';
 
-    protected $parameters = [
-        'COD_DOC_IMP' => [
-            'type' => 'string',
-            'regex' => '^(0|1)+$',
-            'required' => true,
-            'info' => 'Documento de importação',
-            'format' => ''
-        ],
-        'NUM_DOC_IMP' => [
-            'type' => 'string',
-            'regex' => '^([0-9]{1,12})+$', // 1-12 (NT 2011/004)
-            'required' => true,
-            'info' => 'Número do documento de Importação',
-            'format' => ''
-        ],
-        'PIS_IMP' => [
-            'type' => 'numeric',
-            'regex' => '^\d+(\.\d*)?|\.\d+$',
-            'required' => false,
-            'info' => 'Valor pago de PIS na importação',
-            'format' => '15v2'
-        ],
-        'COFINS_IMP' => [
-            'type' => 'numeric',
-            'regex' => '^\d+(\.\d*)?|\.\d+$',
-            'required' => false,
-            'info' => 'Valor pago de COFINS na importação',
-            'format' => '15v2'
-        ],
-        'NUM_ACDRAW' => [
-            'type' => 'string',
-            'regex' => '^([0-9]{1,20})$',
-            'required' => false,
-            'info' => 'Número do Ato Concessório do regime Drawback',
-            'format' => ''
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

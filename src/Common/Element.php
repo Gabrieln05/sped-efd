@@ -21,6 +21,8 @@ abstract class Element implements ElementInterface
      */
     public $values;
     /**
+     * Estrutura dos campos do registro, lida do JSON do leiaute
+     * (storage/layouts/{grupo}/v{leiaute}/{REG}.json). É a única fonte.
      * @var array
      */
     protected $parameters;
@@ -28,17 +30,23 @@ abstract class Element implements ElementInterface
      * @var string
      */
     private $reg;
+    /**
+     * @var stdClass path, layout e vigencia (ver Vigencia::carregar)
+     */
     protected $vigencia;
 
     /**
      * Constructor
      * @param string $reg
+     * @param stdClass $vigencia
+     * @throws \RuntimeException o leiaute não tem o JSON do registro
      */
-    public function __construct(string $reg, stdClass $vigencia = null)
+    public function __construct(string $reg, stdClass $vigencia)
     {
         $this->reg = $reg;
         $this->vigencia = $vigencia;
-        $this->values = new stdClass();
+        $this->values = new Valores();
+        $this->parameters = $this->carregarParametros();
     }
 
     /**
@@ -261,24 +269,22 @@ abstract class Element implements ElementInterface
     }
 
     /**
-     * Localiza os parâmetros de acordo com a vigencia passada
-     * e os substitui
-     * Caso a vigencia não seja passada será usada a regra contida na classe
-     * @param string $grupo
-     * @param string $registro
-     * @return void
+     * Lê a estrutura do registro no JSON do leiaute. Sem JSON, não há registro:
+     * nada de cair numa estrutura embutida na classe.
+     * @return array<string, mixed>
+     * @throws \RuntimeException
      */
-    protected function replaceParams(string $registro)
+    private function carregarParametros(): array
     {
-        if (!empty($this->vigencia)) {
-            $file = "{$this->vigencia->path}/v{$this->vigencia->layout}/$registro.json";
-            if (is_file($file)) {
-                $json = file_get_contents($file);
-                $this->parameters = json_decode($json, true);
-            } else {
-                $json = json_encode($this->parameters, JSON_PRETTY_PRINT);
-                file_put_contents($file, $json);
-            }
+        $layout = $this->vigencia->layout;
+        $file = "{$this->vigencia->path}/v$layout/{$this->reg}.json";
+        if (!is_file($file)) {
+            throw new \RuntimeException("O leiaute $layout não tem o registro {$this->reg} [$file].");
         }
+        $params = json_decode((string) file_get_contents($file), true);
+        if (!is_array($params) || $params === []) {
+            throw new \RuntimeException("JSON do registro {$this->reg} inválido ou vazio [$file].");
+        }
+        return $params;
     }
 }

@@ -11,41 +11,14 @@ class Z1400 extends Element
     const LEVEL = 2;
     const PARENT = '1001';
 
-    protected $parameters = [
-        'COD_ITEM_IPM' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código do item (Tabela própria da unidade da federação '
-            .'(Tabela de Itens UF Índice de Participação dos Municípios) '
-            .'ou campo 02 do Registro 0200',
-            'format'   => ''
-        ],
-        'MUN' => [
-            'type'     => 'integer',
-            'regex'    => '^\d{7}$',
-            'required' => true,
-            'info'     => 'Código do Município de origem/destino',
-            'format'   => ''
-        ],
-        'VALOR' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor mensal correspondente ao município',
-            'format'   => '15v2'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

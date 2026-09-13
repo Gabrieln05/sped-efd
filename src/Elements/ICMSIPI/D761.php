@@ -11,25 +11,14 @@ class D761 extends Element
     const LEVEL = 4;
     const PARENT = 'D760';
 
-    protected $parameters = [
-        'VL_FCP_OP' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor do Fundo de Combate à Pobreza (FCP) vinculado à operação própria',
-            'format'   => '15v2'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams(self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

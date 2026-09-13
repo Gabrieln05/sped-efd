@@ -31,7 +31,7 @@ final class BlockG extends Block
         'g140' => ['class' => Elements\G140::class, 'level' => 5, 'type' => 'multiple']
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'ICMSIPI';
         parent::__construct($layout);

@@ -20,81 +20,14 @@ class C113 extends Element
     const LEVEL = 4;
     const PARENT = 'C110';
 
-    protected $parameters = [
-        'IND_OPER' => [
-            'type' => 'string',
-            'regex' => '^[0-1]{1}$',
-            'required' => true,
-            'info' => 'Indicador do tipo de operação',
-            'format' => ''
-        ],
-        'IND_EMIT' => [
-            'type' => 'string',
-            'regex' => '^[0-1]{1}$',
-            'required' => true,
-            'info' => 'Indicador do emitente do documento fiscal',
-            'format' => ''
-        ],
-        'COD_PART' => [
-            'type' => 'string',
-            'regex' => '^.{1,60}$',
-            'required' => true,
-            'info' => 'Código do participante (campo 02 do Registro 0150):',
-            'format' => ''
-        ],
-        'COD_MOD' => [
-            'type' => 'string',
-            'regex' => '^([A-Z0-9]{2})+$',
-            'required' => true,
-            'info' => 'Código do modelo do documento fiscalValor total do estoque',
-            'format' => ''
-        ],
-        'SER' => [
-            'type' => 'string',
-            'regex' => '^([0-9a-z]{1,4})?$',
-            'required' => false,
-            'info' => 'Série do documento fiscal',
-            'format' => ''
-        ],
-        'SUB' => [
-            'type' => 'numeric',
-            'regex' => '^[0-9]{3}$',
-            'required' => false,
-            'info' => 'Subsérie do documento fiscal',
-            'format' => ''
-        ],
-        'NUM_DOC' => [
-            'type' => 'numeric',
-            'regex' => '^([0-9]{1,9})?$',
-            'required' => true,
-            'info' => 'Número do documento fiscal',
-            'format' => ''
-        ],
-        'DT_DOC' => [
-            'type'     => 'integer',
-            'regex'    => '^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\d{3})$',
-            'required' => false,
-            'info'     => 'Data da emissão do documento fiscal',
-            'format'   => ''
-        ],
-        'CHV_DOCE' => [
-            'type' => 'numeric',
-            'regex' => '^([0-9]{44})?$',
-            'required' => false,
-            'info' => 'Chave do Documento Eletrônico',
-            'format' => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

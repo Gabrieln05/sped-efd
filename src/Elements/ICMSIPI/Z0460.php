@@ -18,32 +18,14 @@ class Z0460 extends Element
     const LEVEL = 3;
     const PARENT = '';
 
-    protected $parameters = [
-        'COD_OBS' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,6}$',
-            'required' => true,
-            'info'     => 'Código da Observação do lançamento fiscal',
-            'format'   => ''
-        ],
-        'TXT' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,255}$',
-            'required' => true,
-            'info'     => 'Descrição da observação vinculada ao lançamento fiscal',
-            'format'   => ''
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

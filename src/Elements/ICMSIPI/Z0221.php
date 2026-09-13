@@ -32,32 +32,14 @@ class Z0221 extends Element
     const LEVEL = 3;
     const PARENT = '0220';
 
-    protected $parameters = [
-        'COD_ITEM_ATOMICO' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Informar o código do item atômico contido no item informado no 0200 Pai.',
-            'format'   => ''
-        ],
-        'QTD_CONTIDA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Informar quantos itens atômicos estão contidos no item informado no 0200 Pai.',
-            'format'   => '15v6'
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

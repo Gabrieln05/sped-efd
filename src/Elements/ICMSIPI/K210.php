@@ -30,53 +30,14 @@ class K210 extends Element
     const LEVEL = 3;
     const PARENT = 'K200|K100';
 
-    protected $parameters = [
-        'DT_INI_OS' => [
-            'type'     => 'string',
-            'regex'    => '^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\d{3})$',
-            'required' => true,
-            'info'     => 'Data de início da ordem de serviço',
-            'format'   => ''
-        ],
-        'DT_FIN_OS' => [
-            'type'     => 'string',
-            'regex'    => '^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\d{3})$',
-            'required' => true,
-            'info'     => 'Data de conclusão da ordem de serviço',
-            'format'   => ''
-        ],
-        'COD_DOC_OS' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,30}$',
-            'required' => true,
-            'info'     => 'Código de identificação da ordem de serviço',
-            'format'   => ''
-        ],
-        'COD_ITEM_ORI' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código do item de origem (campo 02 do Registro 0200)',
-            'format'   => ''
-        ],
-        'QTD_ORI' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Quantidade de origem – saída do estoque',
-            'format'   => '15v6'
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

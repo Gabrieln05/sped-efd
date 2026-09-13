@@ -29,32 +29,14 @@ class Z0450 extends Element
     const LEVEL = 0;
     const PARENT = '';
 
-    protected $parameters = [
-        'COD_INF' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,6}$',
-            'required' => true,
-            'info'     => 'Código da informação complementar do documento fiscal.',
-            'format'   => ''
-        ],
-        'TXT' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,255}$',
-            'required' => true,
-            'info'     => 'Texto livre da informação complementar existente no documento fiscal',
-            'format'   => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

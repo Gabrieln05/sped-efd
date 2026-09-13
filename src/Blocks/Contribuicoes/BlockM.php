@@ -79,7 +79,7 @@ final class BlockM extends Block
         'm810' => ['class' => Elements\M810::class, 'level' => 3, 'type' => 'single'],
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'Contribuicoes';
         parent::__construct($layout);

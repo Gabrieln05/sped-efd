@@ -103,7 +103,7 @@ try {
     $efd->add($b0);
 
 
-    $bH = new BlockH();
+    $bH = new BlockH('017');
 
     $std = new stdClass();
     $std->IND_MOV = 0;
@@ -150,7 +150,7 @@ try {
     //adicionando o bloco 0 ao EFD
     $efd->add($bH);
 
-    $b1 = new Block1;
+    $b1 = new Block1('017');
 
     $std = new \stdClass;
     $std->IND_MOV = '0';

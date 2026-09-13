@@ -11,102 +11,14 @@ class Z1920 extends Element
     const LEVEL = 4;
     const PARENT = '1910';
 
-    protected $parameters = [
-        'VL_TOT_TRANSF_DEBITOS_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor total dos débitos por “Saídas e prestações com débito do imposto”',
-            'format'   => '15v2'
-        ],
-        'VL_TOT_AJ_DEBITOS_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor total de “Ajustes a débito”',
-            'format'   => '15v2'
-        ],
-        'VL_ESTORNOS_CRED_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'V alor total de Ajustes “Estornos de créditos”',
-            'format'   => '15v2'
-        ],
-        'VL_TOT_TRANSF_CREDITOS_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor total dos créditos por “Entradas e aquisições com crédito do imposto”',
-            'format'   => '15v2'
-        ],
-        'VL_TOT_AJ_CREDITOS_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor total de “Ajustes a crédito”',
-            'format'   => '15v2'
-        ],
-        'VL_ESTORNOS_DEB_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'V alor total de Ajustes “Estornos de Débitos”',
-            'format'   => '15v2'
-        ],
-        'VL_SLD_CREDOR_ANT_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor total de “Saldo credor do período anterior”',
-            'format'   => '15v2'
-        ],
-        'VL_SLD_APURADO_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor do saldo devedor apurado',
-            'format'   => '15v2'
-        ],
-        'VL_TOT_DED' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor total de “Deduções”',
-            'format'   => '15v2'
-        ],
-        'VL_ICMS_RECOLHER_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor total de "ICMS a recolher (09-10)',
-            'format'   => '15v2'
-        ],
-        'VL_SLD_CREDOR_TRANSP_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor total de “Saldo credor a transportar para o período seguinte”',
-            'format'   => '15v2'
-        ],
-        'DEB_ESP_OA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valores recolhidos ou a recolher, extra- apuração.',
-            'format'   => '15v2'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

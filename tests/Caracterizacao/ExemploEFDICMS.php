@@ -13,8 +13,8 @@ use stdClass;
  * dados. É a base do teste de caracterização: a saída gravada em
  * tests/fixtures/golden/ só pode mudar de propósito.
  *
- * Blocos H e 1 são criados sem leiaute de propósito, como no exemplo — hoje
- * caem no último leiaute do vigencias.json.
+ * No exemplo original os blocos H e 1 eram criados sem leiaute e caíam no 017;
+ * desde a Onda 1 o leiaute é obrigatório e vai explícito.
  */
 final class ExemploEFDICMS
 {
@@ -89,7 +89,7 @@ final class ExemploEFDICMS
 
         $efd->add($b0);
 
-        $bH = new BlockH();
+        $bH = new BlockH('017');
 
         $std = new stdClass();
         $std->IND_MOV = 0;
@@ -131,7 +131,7 @@ final class ExemploEFDICMS
 
         $efd->add($bH);
 
-        $b1 = new Block1();
+        $b1 = new Block1('017');
 
         $std = new stdClass();
         $std->IND_MOV = '0';

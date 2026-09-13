@@ -18,39 +18,14 @@ class Z0600 extends Element
     const LEVEL = 2;
     const PARENT = '';
 
-    protected $parameters = [
-        'DT_ALT' => [
-            'type'     => 'string',
-            'regex'    => '^[0-9]{8}$',
-            'required' => true,
-            'info'     => 'Data da inclusão/alteração',
-            'format'   => ''
-        ],
-        'COD_CCUS' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código do centro de custo',
-            'format'   => ''
-        ],
-        'CCUS' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Nome do centro de custo',
-            'format'   => ''
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

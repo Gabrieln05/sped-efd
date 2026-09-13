@@ -23,32 +23,14 @@ class Z0190 extends Element
     const LEVEL = 0;
     const PARENT = '';
 
-    protected $parameters = [
-        'UNID' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,6}$',
-            'required' => true,
-            'info'     => 'Código da unidade de medida.',
-            'format'   => ''
-        ],
-        'DESCR' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,255}$',
-            'required' => true,
-            'info'     => 'Descrição da unidade de medida.',
-            'format'   => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

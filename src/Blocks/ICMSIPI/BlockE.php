@@ -69,7 +69,7 @@ final class BlockE extends Block
         'e531' => ['class' => Elements\E531::class, 'level' => 5, 'type' => 'multiple'],
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'ICMSIPI';
         parent::__construct($layout);

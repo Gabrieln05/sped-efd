@@ -17,39 +17,14 @@ class Z0305 extends Element
     const LEVEL = 0;
     const PARENT = '';
 
-    protected $parameters = [
-        'COD_CCUS' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código do centro de custo',
-            'format'   => ''
-        ],
-        'FUNC' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,255}$',
-            'required' => true,
-            'info'     => 'Descrição sucinta da função do bem',
-            'format'   => ''
-        ],
-        'VIDA_UTIL' => [
-            'type'     => 'integer',
-            'regex'    => '^[0-9]{1,3}$',
-            'required' => false,
-            'info'     => 'Vida útil estimada do bem, em número de meses',
-            'format'   => ''
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

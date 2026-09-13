@@ -1,0 +1,149 @@
+{
+    "IND_OPER": {
+        "type": "string",
+        "regex": "^(0[1-5])$",
+        "required": true,
+        "info": "Indicador do Tipo da Opera\u00e7\u00e3o:\r\n            01 \u2013 Venda a Vista de Unidade Conclu\u00edda;\r\n            02 \u2013 Venda a Prazo de Unidade Conclu\u00edda;\r\n            03 \u2013 Venda a Vista de Unidade em Constru\u00e7\u00e3o;\r\n            04 \u2013 Venda a Prazo de Unidade em Constru\u00e7\u00e3o;\r\n            05 \u2013 Outras.",
+        "format": ""
+    },
+    "UNID_IMOB": {
+        "type": "string",
+        "regex": "^(0[1-6])$",
+        "required": true,
+        "info": "Indicador do tipo de unidade imobili\u00e1ria Vendida:\r\n            01 \u2013 Terreno adquirido para venda;\r\n            02 \u2013 Terreno decorrente de loteamento;\r\n            03 \u2013 Lote oriundo de desmembramento de terreno;\r\n            04 \u2013 Unidade resultante de incorpora\u00e7\u00e3o imobili\u00e1ria;\r\n            05 \u2013 Pr\u00e9dio constru\u00eddo\/em constru\u00e7\u00e3o para venda;\r\n            06 \u2013 Outras.",
+        "format": ""
+    },
+    "IDENT_EMP": {
+        "type": "string",
+        "regex": "^.{0,100}$",
+        "required": true,
+        "info": "Identifica\u00e7\u00e3o\/Nome do Empreendimento",
+        "format": ""
+    },
+    "DESC_UNID_IMOB": {
+        "type": "string",
+        "regex": "^.{0,90}$",
+        "required": false,
+        "info": "Descri\u00e7\u00e3o resumida da unidade imobili\u00e1ria vendida",
+        "format": ""
+    },
+    "NUM_CONT": {
+        "type": "string",
+        "regex": "^.{0,90}$",
+        "required": false,
+        "info": "N\u00famero do Contrato\/Documento que formaliza a\r\n            Venda da Unidade Imobili\u00e1ria",
+        "format": ""
+    },
+    "CPF_CNPJ_ADQU": {
+        "type": "string",
+        "regex": "^([0-9]{11}|[0-9]{14})$",
+        "required": true,
+        "info": "Identifica\u00e7\u00e3o da pessoa f\u00edsica (CPF) ou da pessoa\r\n            jur\u00eddica (CNPJ) adquirente da unidade imobili\u00e1ria",
+        "format": ""
+    },
+    "DT_OPER": {
+        "type": "string",
+        "regex": "^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\\d{3})$",
+        "required": true,
+        "info": "Data da opera\u00e7\u00e3o de venda da unidade imobili\u00e1ria",
+        "format": ""
+    },
+    "VL_TOT_VEND": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": true,
+        "info": "Valor total da unidade imobili\u00e1ria vendida\r\n            atualizado at\u00e9 o per\u00edodo da escritura\u00e7\u00e3o",
+        "format": ""
+    },
+    "VL_REC_ACUM": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "Valor recebido acumulado at\u00e9 o m\u00eas anterior ao da\r\n            escritura\u00e7\u00e3o",
+        "format": ""
+    },
+    "VL_TOT_REC": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": true,
+        "info": "Valor total recebido no m\u00eas da escritura\u00e7\u00e3o",
+        "format": ""
+    },
+    "CST_PIS": {
+        "type": "numeric",
+        "regex": "^(\\d{2})$",
+        "required": true,
+        "info": "C\u00f3digo da Situa\u00e7\u00e3o Tribut\u00e1ria referente ao PIS\/PASEP, \r\n            conforme a Tabela indicada no item 4.3.3.",
+        "format": ""
+    },
+    "VL_BC_PIS": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "Valor da base de c\u00e1lculo do PIS\/PASEP",
+        "format": "15v2"
+    },
+    "ALIQ_PIS": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "Al\u00edquota do PIS\/PASEP (em percentual)",
+        "format": "8v4"
+    },
+    "VL_PIS": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "Valor do PIS\/PASEP",
+        "format": "15v2"
+    },
+    "CST_COFINS": {
+        "type": "numeric",
+        "regex": "^((0[1-9])|49|99)$",
+        "required": true,
+        "info": "C\u00f3digo da Situa\u00e7\u00e3o Tribut\u00e1ria referente a COFINS, conforme a Tabela indicada no item 4.3.4.",
+        "format": ""
+    },
+    "VL_BC_COFINS": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "Base de C\u00e1lculo da COFINS",
+        "format": "15v2"
+    },
+    "ALIQ_COFINS": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "Al\u00edquota do COFINS (em percentual)",
+        "format": "6v2"
+    },
+    "VL_COFINS": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "Valor da COFINS",
+        "format": "15v2"
+    },
+    "PERC_REC_RECEB": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "Percentual da receita total recebida at\u00e9 o m\u00eas, da\r\n            unidade imobili\u00e1ria vendida ((Campo 10 + Campo 11) \/ Campo 09)",
+        "format": ""
+    },
+    "IND_NAT_EMP": {
+        "type": "string",
+        "regex": "^(1|2|3|4)$",
+        "required": false,
+        "info": "Indicador da Natureza Espec\u00edfica do Empreendimento:\r\n            1 - Cons\u00f3rcio\r\n            2 - SCP\r\n            3 \u2013 Incorpora\u00e7\u00e3o em Condom\u00ednio\r\n            4 - Outras",
+        "format": ""
+    },
+    "INF_COMPL": {
+        "type": "string",
+        "regex": "^.{0,90}$",
+        "required": false,
+        "info": "Informa\u00e7\u00f5es complementares",
+        "format": ""
+    }
+}

@@ -22,25 +22,14 @@ class Z0206 extends Element
     const LEVEL = 3;
     const PARENT = '0200';
 
-    protected $parameters = [
-        'COD_COMB' => [
-            'type'     => 'string',
-            'regex'    => '^[0-9]{9}$',
-            'required' => true,
-            'info'     => 'Código do produto, conforme tabela publicada pela ANP',
-            'format'   => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

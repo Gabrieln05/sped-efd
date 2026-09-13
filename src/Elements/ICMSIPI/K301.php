@@ -11,32 +11,14 @@ class K301 extends Element
     const LEVEL = 4;
     const PARENT = 'K300';
 
-    protected $parameters = [
-        'COD_ITEM' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código do item produzido (campo 02 do Registro 0200)',
-            'format'   => ''
-        ],
-        'QTD' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Quantidade produzida',
-            'format'   => '15v3'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

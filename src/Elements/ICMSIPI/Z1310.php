@@ -11,81 +11,14 @@ class Z1310 extends Element
     const LEVEL = 3;
     const PARENT = '1300';
 
-    protected $parameters = [
-        'NUM_TANQUE' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,3}$',
-            'required' => true,
-            'info'     => 'Tanque que armazena o combustível.',
-            'format'   => ''
-        ],
-        'ESTQ_ABERT' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Estoque no inicio do dia, em litros',
-            'format'   => '15v3'
-        ],
-        'VOL_ENTR' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Volume Recebido no dia (em litros)',
-            'format'   => '15v3'
-        ],
-        'VOL_DISP' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Volume Disponível (03 + 04), em litros',
-            'format'   => '15v3'
-        ],
-        'VOL_SAIDAS' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Volume Total das Saídas, em litros',
-            'format'   => '15v3'
-        ],
-        'ESTQ_ESCR' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Estoque Escritural(05 – 06), litros',
-            'format'   => '15v3'
-        ],
-        'VAL_AJ_PERDA' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor da Perda, em litros',
-            'format'   => '15v3'
-        ],
-        'VAL_AJ_GANHO' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor do ganho, em litros',
-            'format'   => '15v3'
-        ],
-        'FECH_FISICO' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Volume aferido no tanque, em litros. Estoque de fechamento físico do tanque.',
-            'format'   => '15v3'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

@@ -23,7 +23,7 @@ final class BlockA extends Block
         'a170' => ['class' => Elements\A170::class, 'level' => 4, 'type' => 'multiple'],
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'Contribuicoes';
         parent::__construct($layout);

@@ -11,25 +11,14 @@ class A010 extends Element
     const LEVEL = 2;
     const PARENT = 'A001';
 
-    protected $parameters = [
-        'CNPJ' => [
-            'type' => 'string',
-            'regex' => '^[0-9]{14}$',
-            'required' => false,
-            'info' => 'Número de inscrição do estabelecimento no CNPJ.',
-            'format' => ''
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

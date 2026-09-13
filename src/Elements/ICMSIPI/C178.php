@@ -19,39 +19,14 @@ class C178 extends Element
     const LEVEL = 4;
     const PARENT = 'C170';
 
-    protected $parameters = [
-        'CL_ENQ' => [
-            'type' => 'string',
-            'regex' => '^.{0,5}$',
-            'required' => false,
-            'info' => 'Código da classe de enquadramento do IPI, conforme Tabela 4.5.1.',
-            'format' => ''
-        ],
-        'VL_UNID' => [
-            'type' => 'numeric',
-            'regex' => '^\d+(\.\d*)?|\.\d+$',
-            'required' => false,
-            'info' => 'Valor por unidade padrão de tributação',
-            'format' => '15v2'
-        ],
-        'QUANT_PAD' => [
-            'type' => 'numeric',
-            'regex' => '^\d+(\.\d*)?|\.\d+$',
-            'required' => false,
-            'info' => 'Quantidade total de produtos na unidade padrão de tributação',
-            'format' => '15v3'
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

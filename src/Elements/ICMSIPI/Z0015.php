@@ -24,37 +24,14 @@ class Z0015 extends Element
     const LEVEL = 2;
     const PARENT = '0005';
 
-    protected $parameters = [
-        'UF_ST' => [
-            'type'     => 'string',
-            'regex'    => '^[A-Z]{2}$',
-            'required' => true,
-            'info'     => 'Sigla da unidade da federação do contribuinte '
-            . 'substituído ou unidade de federação do consumidor final não '
-            . 'contribuinte - ICMS Destino EC 87/15.',
-            'format'   => ''
-        ],
-        'IE_ST' => [
-            'type'     => 'string',
-            'regex'    => '^[0-9]{2,14}$',
-            'required' => true,
-            'info'     => 'Inscrição Estadual do contribuinte substituto na '
-            . 'unidade da  federação  do  contribuinte  substituído ou unidade '
-            . 'de federação do consumidor final não contribuinte - ICMS Destino '
-            . 'EC 87/15.',
-            'format'   => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

@@ -59,7 +59,7 @@ final class Block0 extends Block
         'z0600' => ['class' => Elements\Z0600::class, 'level' => 2, 'type' => 'multiple']
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'Contribuicoes';
         parent::__construct($layout);

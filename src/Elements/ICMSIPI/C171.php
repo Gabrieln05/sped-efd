@@ -18,32 +18,14 @@ class C171 extends Element
     const LEVEL = 4;
     const PARENT = 'C171';
 
-    protected $parameters = [
-        'NUM_TANQUE' => [
-            'type' => 'string',
-            'regex' => '^.{1,3}$',
-            'required' => true,
-            'info' => 'Tanque onde foi armazenado o combustível',
-            'format' => ''
-        ],
-        'QTDE' => [
-            'type' => 'numeric',
-            'regex' => '\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info' => 'Quantidade ou volume armazenado',
-            'format' => '15v3'
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

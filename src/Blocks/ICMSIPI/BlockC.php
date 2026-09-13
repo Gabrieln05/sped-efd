@@ -150,6 +150,8 @@ final class BlockC extends Block
         'c510' => ['class' => Elements\C510::class, 'level' => 3, 'type' => 'multiple'],
         'c590' => ['class' => Elements\C590::class, 'level' => 3, 'type' => 'multiple'],
         'c591' => ['class' => Elements\C591::class, 'level' => 3, 'type' => 'multiple'],
+        'c595' => ['class' => Elements\C595::class, 'level' => 3, 'type' => 'multiple'],
+        'c597' => ['class' => Elements\C597::class, 'level' => 4, 'type' => 'multiple'],
         'c600' => ['class' => Elements\C600::class, 'level' => 2, 'type' => 'multiple'],
         'c601' => ['class' => Elements\C601::class, 'level' => 3, 'type' => 'multiple'],
         'c610' => ['class' => Elements\C610::class, 'level' => 3, 'type' => 'multiple'],
@@ -167,7 +169,7 @@ final class BlockC extends Block
         'c890' => ['class' => Elements\C890::class, 'level' => 3, 'type' => 'multiple']
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'ICMSIPI';
         parent::__construct($layout);

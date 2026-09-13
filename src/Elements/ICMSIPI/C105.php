@@ -16,32 +16,14 @@ class C105 extends Element
     const LEVEL = 3;
     const PARENT = 'C100';
 
-    protected $parameters = [
-        'OPER' => [
-            'type' => 'string',
-            'regex' => '^[0-1]{1}$',
-            'required' => true,
-            'info' => 'Indicador do tipo de operação',
-            'format' => ''
-        ],
-        'UF' => [
-            'type' => 'string',
-            'regex' => '^[a-zA-Z]{2}$',
-            'required' => true,
-            'info' => 'Sigla da UF de destino do ICMS_ST',
-            'format' => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

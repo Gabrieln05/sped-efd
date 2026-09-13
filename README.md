@@ -4,7 +4,8 @@ Fork de [nfephp-org/sped-efd](https://github.com/nfephp-org/sped-efd) mantido pa
 
 - **Objetivo:** EFD ICMS/IPI com os leiautes 018, 019, 020 e 021 auditados contra as Notas Técnicas oficiais, em PHP 8.4+.
 - **Fora de escopo por ora:** EFD Contribuições (a escrituração termina para fatos a partir de 01/2027).
-- **Estado:** Onda 0 — ferramental e teste de caracterização. A saída da biblioteca ainda é idêntica ao upstream `b9a874f`: os leiautes são os do upstream e **não estão auditados**.
+- **Estado:** Onda 1 — leiaute obrigatório (nada cai em outro leiaute em silêncio), JSON como única fonte da estrutura dos registros e PHP 8.5 sem deprecations. O arquivo gerado ainda é idêntico ao do upstream `b9a874f`: os leiautes são os do upstream e **não estão auditados**.
+- **Uso:** todo bloco recebe o leiaute (`new Block0('017')`); para escolher pela data do período, `Vigencia::paraPeriodo(Vigencia::ICMSIPI, $dtIni)`.
 - Documentos oficiais de referência em [`docs/leiautes/`](docs/leiautes/).
 
 ---

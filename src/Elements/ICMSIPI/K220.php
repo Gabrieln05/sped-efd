@@ -46,53 +46,14 @@ class K220 extends Element
     const LEVEL = 3;
     const PARENT = 'K215|K210|K200|K100';
 
-    protected $parameters = [
-        'DT_MOV' => [
-            'type'     => 'string',
-            'regex'    => '^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\d{3})$',
-            'required' => true,
-            'info'     => 'Data da movimentação interna',
-            'format'   => ''
-        ],
-        'COD_ITEM_ORI' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código do item de origem (campo 02 do Registro 0200)',
-            'format'   => ''
-        ],
-        'COD_ITEM_DEST' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código do item de destino (campo 02 do Registro 0200)',
-            'format'   => ''
-        ],
-        'QTD_ORI' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Quantidade movimentada do item de origem',
-            'format'   => '15v6'
-        ],
-        'QTD_DEST' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Quantidade movimentada do item de destino',
-            'format'   => '15v6'
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

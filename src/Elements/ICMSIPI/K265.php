@@ -11,39 +11,14 @@ class K265 extends Element
     const LEVEL = 4;
     const PARENT = 'K260';
 
-    protected $parameters = [
-        'COD_ITEM' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,60}$',
-            'required' => true,
-            'info'     => 'Código do item (campo 02 do Registro 0200)',
-            'format'   => ''
-        ],
-        'QTD_CONS' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => false,
-            'info'     => 'Quantidade consumida – saída do estoque',
-            'format'   => '15v3'
-        ],
-        'QTD_RET' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => false,
-            'info'     => 'Quantidade retornada – entrada em estoque',
-            'format'   => '15v3'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

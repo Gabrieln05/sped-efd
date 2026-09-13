@@ -18,7 +18,7 @@ foreach ($b->elements as $key => $element) {
 
 
 try {
-    $b0 = new Block0();
+    $b0 = new Block0('017');
 
      //0000 Obrigatório [1:1]
     //Abertura do Arquivo Digital e Identificação da entidade

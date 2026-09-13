@@ -38,7 +38,7 @@ final class BlockD extends Block
         'd609' => ['class' => Elements\D609::class, 'level' => 4, 'type' => 'multiple'],
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'Contribuicoes';
         parent::__construct($layout);

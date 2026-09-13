@@ -12,32 +12,14 @@ class C465 extends Element
     const LEVEL = 5;
     const PARENT = 'C460';
 
-    protected $parameters = [
-        'CHV_CFE' => [
-            'type' => 'numeric',
-            'regex' => '^([0-9]{44})?$',
-            'required' => true,
-            'info' => 'Chave do Cupom Fiscal Eletrônico',
-            'format' => ''
-        ],
-        'NUM_CCF' => [
-            'type' => 'numeric',
-            'regex' => '^(\d{1,9})$',
-            'required' => true,
-            'info' => 'Número do Contador de Cupom Fiscal',
-            'format' => ''
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

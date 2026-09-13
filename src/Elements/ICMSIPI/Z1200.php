@@ -11,60 +11,14 @@ class Z1200 extends Element
     const LEVEL = 2;
     const PARENT = '1001';
 
-    protected $parameters = [
-        'COD_AJ_APUR' => [
-            'type'     => 'string',
-            'regex'    => '^\d{3}9\d{4}$',
-            'required' => true,
-            'info'     => 'Código de ajuste, conforme informado na Tabela indicada no item 5.1.1.',
-            'format'   => ''
-        ],
-        'SLD_CRED' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Saldo de créditos fiscais de períodos anteriores',
-            'format'   => '15v2'
-        ],
-        'CRED_APR' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Total de crédito apropriado no mês',
-            'format'   => '15v2'
-        ],
-        'CRED_RECEB' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Total de créditos recebidos por transferência',
-            'format'   => '15v2'
-        ],
-        'CRED_UTIL' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Total de créditos utilizados no período',
-            'format'   => '15v2'
-        ],
-        'SLD_CRED_FIM' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Saldo de crédito fiscal acumulado a transportar para o período seguinte',
-            'format'   => '15v2'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

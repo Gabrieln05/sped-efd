@@ -22,30 +22,13 @@ class H001 extends Element
     const PARENT = '';
 
     /**
-     * Estes parametros devem representar o layout atual do elemento
-     * @var array[]
-     */
-    protected $parameters = [
-        'IND_MOV' => [
-            'type'     => 'numeric',
-            'regex'    => '^[0-1]{1}$',
-            'required' => true,
-            'info'     => 'Indicador de movimento: '
-            . '0- Bloco com dados informados; '
-            . '1- Bloco sem dados informados',
-            'format'   => ''
-        ]
-    ];
-
-    /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
     }
 }

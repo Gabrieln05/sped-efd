@@ -31,44 +31,14 @@ class H005 extends Element
     const LEVEL = 2;
     const PARENT = 'H001';
 
-    protected $parameters = [
-        'DT_INV' => [
-            'type'     => 'string',
-            'regex'    => '^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\d{3})$',
-            'required' => true,
-            'info'     => 'Data do inventário',
-            'format'   => ''
-        ],
-        'VL_INV' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor total do estoque',
-            'format'   => '15v2'
-        ],
-        'MOT_INV' => [
-            'type'     => 'string',
-            'regex'    => '^(0[1-5]{1})$',
-            'required' => true,
-            'info'     => 'Informe o motivo do Inventário: '
-            . '01 – No final no período; '
-            . '02 – Na mudança de forma de tributação da mercadoria (ICMS); '
-            . '03 – Na solicitação da baixa cadastral, paralisação temporária e outras situações; '
-            . '04 – Na alteração de regime de pagamento – condição do contribuinte; '
-            . '05 – Por determinação dos fiscos.',
-            'format'   => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
     }
 }

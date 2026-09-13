@@ -19,7 +19,8 @@ abstract class Block implements BlockInterface
      */
     protected $bloco = '';
     /**
-     * @var int
+     * Registro totalizador do bloco (x990)
+     * @var string
      */
     protected $elementTotal;
     /**
@@ -36,19 +37,20 @@ abstract class Block implements BlockInterface
     protected $grupo;
 
     /**
-     * @param string|null $layout
+     * @param string $layout código do leiaute com 3 dígitos (ex.: '017');
+     *                       para escolher pela data use Vigencia::paraPeriodo()
+     * @throws \InvalidArgumentException leiaute não disponível para o grupo
      */
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
-        $layout = str_pad($layout ?? 0, 3, '0', STR_PAD_LEFT);
-        $this->vigencia = (object) $this->layoutPath($layout);
-        $this->layout = $this->vigencia->layout;
+        $this->vigencia = Vigencia::carregar($this->grupo, $layout);
+        $this->layout = $layout;
     }
 
     /**
      * Call classes to build each EFD element
      * @param string $name
-     * @param array $arguments [std]
+     * @param array<int, mixed> $arguments [std]
      * @return void
      * @throws \Exception
      */
@@ -63,7 +65,11 @@ abstract class Block implements BlockInterface
         if (empty($arguments[0])) {
             throw new \Exception("Sem dados passados para o método [$name].");
         }
-        $elclass = new $className($arguments[0], $this->vigencia ?? null);
+        /** @var Element $elclass */
+        $elclass = new $className($arguments[0], $this->vigencia);
+        if ($className::REG === '0000') {
+            $this->conferirCodVer($elclass);
+        }
         foreach ($elclass->errors as $err) {
             $this->errors[] = $err;
         }
@@ -84,19 +90,17 @@ abstract class Block implements BlockInterface
     }
 
     /**
-     * Procura e usa a ultima vigência registrada no json
-     * @param string|null $layout
-     * @return array
+     * O COD_VER do registro 0000 tem de ser o leiaute dos blocos; vazio, assume o leiaute.
      */
-    protected function layoutPath(string $layout = null): array
+    private function conferirCodVer(Element $registro): void
     {
-        $path = dirname(dirname(__DIR__)) . '/storage/layouts/'. $this->grupo;
-        $vigarray = json_decode(file_get_contents($path .  '/vigencias.json'), true);
-        $vigencia = $vigarray[$layout] ?? null;
-        if (empty($vigencia)) {
-            $last = array_key_last($vigarray);
-            return ['path' => $path, 'layout' => (string) $last, 'vigencia' => (object) $vigarray[$last]];
+        $codVer = $registro->std->cod_ver ?? null;
+        if ($codVer === null || $codVer === '') {
+            $registro->std->cod_ver = $this->layout;
+            return;
         }
-        return ['path' => $path, 'layout' => (string) $layout, 'vigencia' => (object) $vigarray[$layout]];
+        if ((string) $codVer !== $this->layout) {
+            $registro->errors[] = "[0000] campo: COD_VER [$codVer] diferente do leiaute dos blocos [{$this->layout}].";
+        }
     }
 }

@@ -37,90 +37,14 @@ class G110 extends Element
     const LEVEL = 2;
     const PARENT = 'G001';
 
-    protected $parameters = [
-        'DT_INI'     => [
-            'type'     => 'string',
-            'regex'    => '^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\d{3})$',
-            'required' => true,
-            'info'     => 'Data inicial a que a apuração se refere.',
-            'format'   => ''
-        ],
-        'DT_FIN'     => [
-            'type'     => 'string',
-            'regex'    => '^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\d{3})$',
-            'required' => true,
-            'info'     => 'Data inicial a que a apuração se refere.',
-            'format'   => ''
-        ],
-        'SALDO_IN_ICMS' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Saldo inicial de ICMS do CIAP, composto por ICMS  de  bens  que  entraram'
-                . ' anteriormente  ao período de apuração (somatório dos campos 05 a 08'
-                . ' (VL_IMOB_ICMS_OP + VL_IMOB_ICMS_ST + VL_IMOB_ICMS_FRT + VL_IMOB_ICMS_DIF) '
-                .' dos registros G125)',
-            'format'   => '15v2'
-        ],
-        'SOM_PARC' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Somatório  das  parcelas  de  ICMS  passível  de'
-                . ' apropriação de cada bem (campo 10 (VL_PARC_PASS) do G125)',
-            'format'   => '15v2'
-        ],
-        'VL_TRIB_EXP' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor do somatório das saídas tributadas e'
-                . 'saídas para exportação',
-            'format'   => '15v2'
-        ],
-        'VL_TOTAL' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor total de saídas',
-            'format'   => '15v2'
-        ],
-        'IND_PER_SAI' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Índice de participação do valor do somatório das '
-                . 'saídas  tributadas  e  saídas  para  exportação  no '
-                . 'valor  total  de  saídas  (Campo  06 VL_TRIB_EXP dividido  pelo campo 07 VL_TOTAL)',
-            'format'   => '15v8'
-        ],
-        'ICMS_APROP' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor de ICMS a ser apropriado na apuração do ICMS, '
-                . 'correspondente á  multiplicação do campo 05 (SOM_PARC) pelo campo 08 (IND_PER_SAI).',
-            'format'   => '15v2'
-        ],
-        'SOM_ICMS_OC' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Valor de outros créditos a ser apropriado na Apuração do ICMS,'
-                . ' correspondente ao somatório do campo 09 (VL_PARC_APROP) do registro G126.',
-            'format'   => '15v2'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

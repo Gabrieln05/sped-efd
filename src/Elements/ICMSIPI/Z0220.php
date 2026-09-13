@@ -34,42 +34,14 @@ class Z0220 extends Element
     const LEVEL = 3;
     const PARENT = '0200';
 
-    protected $parameters = [
-        'UNID_CONV' => [
-            'type'     => 'string',
-            'regex'    => '^.{1,6}',
-            'required' => true,
-            'info'     => 'Unidade comercial a ser convertida na unidade de estoque,'
-                . ' referida no registro 0200.',
-            'format'   => ''
-        ],
-        'FAT_CONV' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Fator de conversão: fator utilizado para converter '
-                . '(multiplicar) a unidade a ser convertida na unidade adotada '
-                . 'no inventário.',
-            'format'   => '15v6'
-        ],
-        "COD_BARRA" => [
-            'type'     => 'string',
-            'regex'    => '^([0-9]{8}|[0-9]{12,14})$',
-            'required' => false,
-            'info'     => 'informar o código GTIN-8, GTIN-12, GTIN-13 ou GTIN-14 da unidade comercial',
-            'format'   => ''
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

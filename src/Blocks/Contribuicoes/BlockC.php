@@ -39,9 +39,7 @@ final class BlockC extends Block
         'c400' => ['class' => Elements\C400::class, 'level' => 3, 'type' => 'multiple'],
         'c405' => ['class' => Elements\C405::class, 'level' => 4, 'type' => 'multiple'],
         'c481' => ['class' => Elements\C481::class, 'level' => 5, 'type' => 'multiple'],
-        'c485' => ['class' => Elements\C485::class, 'level' => 5, 'type' => 'multiple'],
         'c489' => ['class' => Elements\C489::class, 'level' => 4, 'type' => 'single'],
-        'c490' => ['class' => Elements\C490::class, 'level' => 3, 'type' => 'multiple'],
         'c491' => ['class' => Elements\C491::class, 'level' => 4, 'type' => 'multiple'],
         'c495' => ['class' => Elements\C495::class, 'level' => 4, 'type' => 'multiple'],
         'c499' => ['class' => Elements\C499::class, 'level' => 4, 'type' => 'multiple'],
@@ -61,10 +59,9 @@ final class BlockC extends Block
         'c870' => ['class' => Elements\C870::class, 'level' => 4, 'type' => 'single'],
         'c880' => ['class' => Elements\C880::class, 'level' => 4, 'type' => 'multiple'],
         'c890' => ['class' => Elements\C890::class, 'level' => 4, 'type' => 'multiple'],
-        'c990' => ['class' => Elements\C990::class, 'level' => 1, 'type' => 'multiple'],
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'Contribuicoes';
         parent::__construct($layout);

@@ -11,33 +11,14 @@ class Z0190 extends Element
     const LEVEL = 3;
     const PARENT = '1000';
 
-    protected $parameters = [
-        'UNID' => [
-            'type' => 'string',
-            'regex' => '^.{0,6}$',
-            'required' => false,
-            'info' => 'Código da unidade de medida',
-            'format' => ''
-        ],
-        'DESCR' => [
-            'type' => 'string',
-            'regex' => '^(.*)$',
-            'required' => false,
-            'info' => 'Descrição da unidade de medida',
-            'format' => ''
-        ],
-
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

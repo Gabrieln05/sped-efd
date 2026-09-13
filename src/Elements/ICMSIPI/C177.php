@@ -19,25 +19,14 @@ class C177 extends Element
     const LEVEL = 4;
     const PARENT = 'C170';
 
-    protected $parameters = [
-        'COD_INF_ITEM' => [
-            'type' => 'string',
-            'regex' => '^.{8}$',
-            'required' => false,
-            'info' => '5.6 – Tabela informações adicionais dos itens do documento fiscal',
-            'format' => ''
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

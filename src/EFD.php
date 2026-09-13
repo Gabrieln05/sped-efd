@@ -14,19 +14,24 @@ abstract class EFD
      * @var array
      */
     protected $possibles = [];
+    /**
+     * Conteúdo de cada bloco já montado, pela chave de $possibles
+     * @var array<string, string>
+     */
+    private array $blocos = [];
 
     /**
      * Add
-     * @param BlockInterface $block
+     * @param BlockInterface|null $block
      */
-    public function add(BlockInterface $block = null)
+    public function add(?BlockInterface $block = null)
     {
         if (empty($block)) {
             return;
         }
         $name = strtolower((new \ReflectionClass($block))->getShortName());
         if (array_key_exists($name, $this->possibles)) {
-            $this->{$name} = $block->get();
+            $this->blocos[$name] = $block->get();
             foreach ($block->errors as $err) {
                 $this->errors[] = $err;
             }
@@ -41,8 +46,8 @@ abstract class EFD
         $efd = '';
         $keys = array_keys($this->possibles);
         foreach ($keys as $key) {
-            if (isset($this->$key)) {
-                $efd .= $this->$key;
+            if (isset($this->blocos[$key])) {
+                $efd .= $this->blocos[$key];
             }
         }
         $efd .= $this->totalize($efd);

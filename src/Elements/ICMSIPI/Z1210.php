@@ -11,46 +11,14 @@ class Z1210 extends Element
     const LEVEL = 3;
     const PARENT = '1200';
 
-    protected $parameters = [
-        'TIPO_UTIL' => [
-            'type'     => 'string',
-            'regex'    => '^.{4}$',
-            'required' => true,
-            'info'     => 'Tipo de utilização do crédito, conforme tabela indicada no item 5.5.',
-            'format'   => ''
-        ],
-        'NR_DOC' => [
-            'type'     => 'string',
-            'regex'    => '^.*$',
-            'required' => false,
-            'info'     => 'Número do documento utilizado na baixa de créditos',
-            'format'   => ''
-        ],
-        'VL_CRED_UTIL' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Total de crédito utilizado',
-            'format'   => '15v2'
-        ],
-        'CHV_DOCE' => [
-            'type'     => 'string',
-            'regex'    => '^\d{44}$',
-            'required' => false,
-            'info'     => 'Chave do Documento Eletrônico',
-            'format'   => ''
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

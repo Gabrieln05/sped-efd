@@ -20,40 +20,14 @@ class H020 extends Element
     const LEVEL = 4;
     const PARENT = 'H010';
 
-    protected $parameters = [
-        'CST_ICMS' => [
-            'type'     => 'string',
-            'regex'    => '^[0-9]{3}$',
-            'required' => true,
-            'info'     => 'Código da Situação Tributária referente ao ICMS, '
-            . 'conforme a Tabela indicada no item 4.3.1',
-            'format'   => ''
-        ],
-        'BC_ICMS' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Informe a base de cálculo do ICMS',
-            'format'   => '15v2'
-        ],
-        'VL_ICMS' => [
-            'type'     => 'numeric',
-            'regex'    => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info'     => 'Informe o valor do ICMS a ser debitado ou creditado',
-            'format'   => '15v2'
-        ]
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
     }
 }

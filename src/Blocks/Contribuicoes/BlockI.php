@@ -24,7 +24,7 @@ final class BlockI extends Block
         'i399' => ['class' => Elements\I399::class, 'level' => 4, 'type' => 'multiple'],
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'Contribuicoes';
         parent::__construct($layout);

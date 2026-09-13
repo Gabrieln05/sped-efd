@@ -54,7 +54,7 @@ use NFePHP\EFD\Common\Block;
  * @method Elements\D730 d730(\stdClass $std) Constructor element D730
  * @method Elements\D750 d750(\stdClass $std) Constructor element D750
  * @method Elements\D760 d760(\stdClass $std) Constructor element D760
- * @method Elements\D760 D761(\stdClass $std) Constructor element D761
+ * @method Elements\D761 d761(\stdClass $std) Constructor element D761
  */
 final class BlockD extends Block
 {
@@ -107,7 +107,7 @@ final class BlockD extends Block
         'd761' => ['class' => Elements\D761::class, 'level' => 4, 'type' => 'multiple']
     ];
 
-    public function __construct(string $layout = null)
+    public function __construct(string $layout)
     {
         $this->grupo = 'ICMSIPI';
         parent::__construct($layout);

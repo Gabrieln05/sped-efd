@@ -18,7 +18,7 @@ foreach ($b->elements as $key => $element) {
 
 
 try {
-    $bK = new BlockK();
+    $bK = new BlockK('017');
 
     $std = new stdClass();
     $std->IND_MOV = 0;

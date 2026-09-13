@@ -18,67 +18,14 @@ class C173 extends Element
     const LEVEL = 4;
     const PARENT = 'C';
 
-    protected $parameters = [
-        'LOTE_MED' => [
-            'type' => 'string',
-            'regex' => '^(.*)$',
-            'required' => true,
-            'info' => 'Número do lote de fabricação do medicamento',
-            'format' => ''
-        ],
-        'QTD_ITEM' => [
-            'type' => 'numeric',
-            'regex' => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info' => 'Quantidade de item por lote',
-            'format' => '15v3'
-        ],
-        'DT_FAB' => [
-            'type' => 'string',
-            'regex' => '^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\d{3})$',
-            'required' => true,
-            'info' => 'Data de fabricação do medicamento',
-            'format' => ''
-        ],
-        'DT_VAL' => [
-            'type' => 'string',
-            'regex' => '^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\d{3})$',
-            'required' => true,
-            'info' => 'Data de expiração da validade do medicamento',
-            'format' => ''
-        ],
-        'IND_MED' => [
-            'type' => 'string',
-            'regex' => '^(0|1|2|3|4)$',
-            'required' => true,
-            'info' => 'Indicador de tipo de referência da base de cálculo do ICMS',
-            'format' => ''
-        ],
-        'TP_PROD' => [
-            'type' => 'string',
-            'regex' => '^(0|1|2)$',
-            'required' => true,
-            'info' => 'Tipo de produto',
-            'format' => ''
-        ],
-        'VL_TAB_MAX' => [
-            'type' => 'numeric',
-            'regex' => '^\d+(\.\d*)?|\.\d+$',
-            'required' => true,
-            'info' => 'Valor   do   preço   tabelado   ou   valor   do   preço máximo',
-            'format' => '15v2'
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }

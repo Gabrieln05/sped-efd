@@ -12,53 +12,14 @@ class C116 extends Element
     const LEVEL = 4;
     const PARENT = 'C110';
 
-    protected $parameters = [
-        'COD_MOD' => [
-            'type' => 'string',
-            'regex' => '^(59)+$',
-            'required' => true,
-            'info' => 'Código do modelo do documento fiscalValor total do estoque',
-            'format' => ''
-        ],
-        'NR_SAT' => [
-            'type' => 'numeric',
-            'regex' => '^([0-9]{9})+$',
-            'required' => true,
-            'info' => 'Número de Série do equipamento SAT',
-            'format' => ''
-        ],
-        'CHV_CFE' => [
-            'type' => 'numeric',
-            'regex' => '^([0-9]{44})?$',
-            'required' => false,
-            'info' => 'Chave do Cupom Fiscal Eletrônico',
-            'format' => ''
-        ],
-        'NUM_CFE' => [
-            'type' => 'numeric',
-            'regex' => '^([0-9]{6})?$',
-            'required' => false,
-            'info' => 'Número do Cupom Fiscal Eletrônico',
-            'format' => ''
-        ],
-        'DT_DOC' => [
-            'type' => 'string',
-            'regex' => '^(0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])([12]\d{3})$',
-            'required' => false,
-            'info' => 'Data da emissão do documento fiscal',
-            'format' => ''
-        ],
-    ];
-
     /**
      * Constructor
      * @param stdClass $std
      * @param stdClass $vigencia
      */
-    public function __construct(stdClass $std, stdClass $vigencia = null)
+    public function __construct(stdClass $std, stdClass $vigencia)
     {
         parent::__construct(self::REG, $vigencia);
-        $this->replaceParams( self::REG);
         $this->std = $this->standarize($std);
         $this->postValidation();
     }
