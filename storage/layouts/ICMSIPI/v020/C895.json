@@ -1,0 +1,16 @@
+{
+    "COD_OBS": {
+        "type": "string",
+        "regex": "^.{1,6}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "TXT_COMPL": {
+        "type": "string",
+        "regex": "^.*$",
+        "required": false,
+        "info": "",
+        "format": ""
+    }
+}

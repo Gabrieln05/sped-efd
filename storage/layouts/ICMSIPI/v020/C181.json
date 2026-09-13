@@ -1,0 +1,142 @@
+{
+    "COD_MOT_REST_COMPL": {
+        "type": "string",
+        "regex": "^.{5}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "QUANT_CONV": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    },
+    "UNID": {
+        "type": "string",
+        "regex": "^.{1,6}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "COD_MOD_SAIDA": {
+        "type": "string",
+        "regex": "^(01|1B|02|2D|04|55|59|60|65)$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "SERIE_SAIDA": {
+        "type": "string",
+        "regex": "^.{1,3}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "ECF_FAB_SAIDA": {
+        "type": "string",
+        "regex": "^.{1,21}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "NUM_DOC_SAIDA": {
+        "type": "numeric",
+        "regex": "^\\d{1,9}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "CHV_DFE_SAIDA": {
+        "type": "numeric",
+        "regex": "^\\d{44}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "DT_DOC_SAIDA": {
+        "type": "numeric",
+        "regex": "^\\d{8}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "NUM_ITEM_SAIDA": {
+        "type": "numeric",
+        "regex": "^\\d{1,3}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "VL_UNIT_CONV_SAIDA": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    },
+    "VL_UNIT_ICMS_OP_ESTOQUE_CONV_SAIDA": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    },
+    "VL_UNIT_ICMS_ST_ESTOQUE_CONV_SAIDA": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    },
+    "VL_UNIT_FCP_ICMS_ST_ESTOQUE_CONV_SAIDA": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    },
+    "VL_UNIT_ICMS_NA_OPERACAO_CONV_SAIDA": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    },
+    "VL_UNIT_ICMS_OP_CONV_SAIDA": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    },
+    "VL_UNIT_ICMS_ST_CONV_REST": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    },
+    "VL_UNIT_FCP_ST_CONV_REST": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    },
+    "VL_UNIT_ICMS_ST_CONV_COMPL": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    },
+    "VL_UNIT_FCP_ST_CONV_COMPL": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v6"
+    }
+}

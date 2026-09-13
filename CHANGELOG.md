@@ -4,6 +4,44 @@ All Notable changes to `sped-efd` will be documented in this file.
 
 Todas as atualizações a partir de 30/05/206 devem observar os principios [Mantendo o CHANGELOG](http://keepachangelog.com/).
 
+## [Fork Artemis] Onda 2 — 2026-09-13
+
+Leiaute 020 da EFD ICMS/IPI (períodos de 01/01/2026 a 31/12/2026), gerado a
+partir da NT 2025.001 v1.0 e do Guia Prático 3.2.2, não por cópia do 017.
+
+### Added
+- `storage/layouts/ICMSIPI/v020` (257 registros) e o 020 no `vigencias.json`.
+- Ferramentas em `tools/leiaute/`: extrator da referência a partir do texto
+  dos PDFs, gerador da pasta do leiaute e comparador campo a campo (ver o
+  README de lá). Referência versionada em `docs/leiautes/referencia/020.json`
+  e decisões manuais, cada uma com a fonte, em `tools/leiaute/ajustes/020.json`.
+- Registros que existem no leiaute e faltavam na biblioteca: `C181`, `C186`,
+  `C855`, `C857`, `C895`, `C897`, `D731`, `D735`, `D737` (classe, entrada no
+  bloco e JSON no 020 e no 017).
+- Teste que confere os JSONs de cada leiaute auditado contra a referência
+  oficial; teste linha a linha dos registros que mudaram; arquivo completo do
+  020 para validar no PVA (`tests/fixtures/pva/efd-icms-ipi-020.txt`).
+
+### Fixed (no 020, em relação ao que vinha no 017)
+- Campos faltando: `CAP_TANQUE` (1310), campos 18 a 23 do 1391,
+  `VL_UNIT_CONV` (C185, C330, C380, C430, C480, C815, C880).
+- Casas decimais que mudavam o arquivo gerado: alíquotas e valores com
+  `format` vazio (sairiam com ponto), unitários do C176/C180/C185/H030 e
+  quantidades do bloco K com 6 decimais, `QUANT_BC_PIS` com 3, `DED` e
+  `VL_TERC`/`VL_DA` do D700/D750.
+- Regex que só aceitava vazio (`UNID` de C180/C380/C430/C480/C880, `COD_DA`,
+  `NUM_DA`, `IND_EMIT` do D180), tamanhos (`NUM_PROC` 60, `COD_ANT_ITEM` 60) e
+  valores válidos (C105 `OPER` 2, C120 `COD_DOC_IMP` 2 — DUIMP, D700 `COD_MOD` 62,
+  H005 `MOT_INV` 06, entre outros).
+- Campo C gravado como número (`COD_INF`, `CHV_COD_DIG`, `IND_MOV` dos blocos) e
+  `C112.NUM_DA` com a descrição no lugar do tipo.
+- Ordem dos campos do E313; obrigatoriedade de SER, CHV_DOCe, FIN_DOCe e
+  TIP_FAT no D700 (históricos 018 e 019).
+
+### Pendente
+- Validação do arquivo de teste no PVA da EFD ICMS/IPI.
+- `B035` sem auditoria (tabela ilegível nos dois PDFs; estrutura do 017).
+
 ## [Fork Artemis] Onda 1 — 2026-09-12
 
 Fundação. O arquivo gerado continua idêntico ao do upstream `b9a874f`; o que

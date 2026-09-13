@@ -39,7 +39,9 @@ use NFePHP\EFD\Common\Block;
  * @method Elements\C178 c178(\stdClass $std) Constructor element C178
  * @method Elements\C179 c179(\stdClass $std) Constructor element C179
  * @method Elements\C180 c180(\stdClass $std) Constructor element C180
+ * @method Elements\C181 c181(\stdClass $std) Constructor element C181
  * @method Elements\C185 c185(\stdClass $std) Constructor element C185
+ * @method Elements\C186 c186(\stdClass $std) Constructor element C186
  * @method Elements\C190 c190(\stdClass $std) Constructor element C190
  * @method Elements\C191 c191(\stdClass $std) Constructor element C191
  * @method Elements\C195 c195(\stdClass $std) Constructor element C195
@@ -82,10 +84,14 @@ use NFePHP\EFD\Common\Block;
  * @method Elements\C810 c810(\stdClass $std) Constructor element C810
  * @method Elements\C815 c815(\stdClass $std) Constructor element C815
  * @method Elements\C850 c850(\stdClass $std) Constructor element C850
+ * @method Elements\C855 c855(\stdClass $std) Constructor element C855
+ * @method Elements\C857 c857(\stdClass $std) Constructor element C857
  * @method Elements\C860 c860(\stdClass $std) Constructor element C860
  * @method Elements\C870 c870(\stdClass $std) Constructor element C870
  * @method Elements\C880 c880(\stdClass $std) Constructor element C880
  * @method Elements\C890 c890(\stdClass $std) Constructor element C890
+ * @method Elements\C895 c895(\stdClass $std) Constructor element C895
+ * @method Elements\C897 c897(\stdClass $std) Constructor element C897
  */
 final class BlockC extends Block
 {
@@ -120,7 +126,9 @@ final class BlockC extends Block
         'c178' => ['class' => Elements\C178::class, 'level' => 4, 'type' => 'single'],
         'c179' => ['class' => Elements\C179::class, 'level' => 4, 'type' => 'single'],
         'c180' => ['class' => Elements\C180::class, 'level' => 3, 'type' => 'single'],
+        'c181' => ['class' => Elements\C181::class, 'level' => 4, 'type' => 'multiple'],
         'c185' => ['class' => Elements\C185::class, 'level' => 3, 'type' => 'multiple'],
+        'c186' => ['class' => Elements\C186::class, 'level' => 3, 'type' => 'multiple'],
         'c190' => ['class' => Elements\C190::class, 'level' => 3, 'type' => 'multiple'],
         'c191' => ['class' => Elements\C191::class, 'level' => 4, 'type' => 'single'],
         'c195' => ['class' => Elements\C195::class, 'level' => 3, 'type' => 'multiple'],
@@ -163,10 +171,14 @@ final class BlockC extends Block
         'c810' => ['class' => Elements\C810::class, 'level' => 3, 'type' => 'multiple'],
         'c815' => ['class' => Elements\C815::class, 'level' => 4, 'type' => 'single'],
         'c850' => ['class' => Elements\C850::class, 'level' => 3, 'type' => 'multiple'],
+        'c855' => ['class' => Elements\C855::class, 'level' => 3, 'type' => 'multiple'],
+        'c857' => ['class' => Elements\C857::class, 'level' => 4, 'type' => 'multiple'],
         'c860' => ['class' => Elements\C860::class, 'level' => 2, 'type' => 'multiple'],
         'c870' => ['class' => Elements\C870::class, 'level' => 3, 'type' => 'multiple'],
         'c880' => ['class' => Elements\C880::class, 'level' => 4, 'type' => 'single'],
-        'c890' => ['class' => Elements\C890::class, 'level' => 3, 'type' => 'multiple']
+        'c890' => ['class' => Elements\C890::class, 'level' => 3, 'type' => 'multiple'],
+        'c895' => ['class' => Elements\C895::class, 'level' => 3, 'type' => 'multiple'],
+        'c897' => ['class' => Elements\C897::class, 'level' => 4, 'type' => 'multiple'],
     ];
 
     public function __construct(string $layout)

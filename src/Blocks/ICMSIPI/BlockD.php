@@ -52,6 +52,9 @@ use NFePHP\EFD\Common\Block;
  * @method Elements\D697 d697(\stdClass $std) Constructor element D697
  * @method Elements\D700 d700(\stdClass $std) Constructor element D700
  * @method Elements\D730 d730(\stdClass $std) Constructor element D730
+ * @method Elements\D731 d731(\stdClass $std) Constructor element D731
+ * @method Elements\D735 d735(\stdClass $std) Constructor element D735
+ * @method Elements\D737 d737(\stdClass $std) Constructor element D737
  * @method Elements\D750 d750(\stdClass $std) Constructor element D750
  * @method Elements\D760 d760(\stdClass $std) Constructor element D760
  * @method Elements\D761 d761(\stdClass $std) Constructor element D761
@@ -102,6 +105,9 @@ final class BlockD extends Block
         'd697' => ['class' => Elements\D697::class, 'level' => 4, 'type' => 'multiple'],
         'd700' => ['class' => Elements\D700::class, 'level' => 2, 'type' => 'multiple'],
         'd730' => ['class' => Elements\D730::class, 'level' => 3, 'type' => 'multiple'],
+        'd731' => ['class' => Elements\D731::class, 'level' => 4, 'type' => 'single'],
+        'd735' => ['class' => Elements\D735::class, 'level' => 3, 'type' => 'multiple'],
+        'd737' => ['class' => Elements\D737::class, 'level' => 4, 'type' => 'multiple'],
         'd750' => ['class' => Elements\D750::class, 'level' => 2, 'type' => 'multiple'],
         'd760' => ['class' => Elements\D760::class, 'level' => 3, 'type' => 'multiple'],
         'd761' => ['class' => Elements\D761::class, 'level' => 4, 'type' => 'multiple']

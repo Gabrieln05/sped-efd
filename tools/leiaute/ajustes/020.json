@@ -1,0 +1,62 @@
+{
+    "_sobre": "Decisões manuais sobre a referência extraída da NT 2025.001 v1.0 e do Guia Prático 3.2.2 (leiaute 020). Cada item registra a fonte em _fonte; ver tools/leiaute/README.md.",
+    "sem_auditoria": {
+        "B035": "Bloco B (ISS do DF): tabela ilegível na NT e no Guia; mantida a estrutura do 017"
+    },
+    "_fonte_referencia": {
+        "C185": "NT 2025.001: nomes quebram antes do número do campo e o extrator não fecha a tabela; lista transcrita da NT"
+    },
+    "referencia": {
+        "C185": [
+            { "nome": "NUM_ITEM", "tipo": "N", "tam": 3, "fixo": false, "dec": null },
+            { "nome": "COD_ITEM", "tipo": "C", "tam": 60, "fixo": false, "dec": null },
+            { "nome": "CST_ICMS", "tipo": "N", "tam": 3, "fixo": true, "dec": null },
+            { "nome": "CFOP", "tipo": "N", "tam": 4, "fixo": true, "dec": null },
+            { "nome": "COD_MOT_REST_COMPL", "tipo": "C", "tam": 5, "fixo": true, "dec": null },
+            { "nome": "QUANT_CONV", "tipo": "N", "tam": null, "fixo": false, "dec": 6 },
+            { "nome": "UNID", "tipo": "C", "tam": 6, "fixo": false, "dec": null },
+            { "nome": "VL_UNIT_CONV", "tipo": "N", "tam": null, "fixo": false, "dec": 6 },
+            { "nome": "VL_UNIT_ICMS_NA_OPERACAO_CONV", "tipo": "N", "tam": null, "fixo": false, "dec": 6 },
+            { "nome": "VL_UNIT_ICMS_OP_CONV", "tipo": "N", "tam": null, "fixo": false, "dec": 6 },
+            { "nome": "VL_UNIT_ICMS_OP_ESTOQUE_CONV", "tipo": "N", "tam": null, "fixo": false, "dec": 6 },
+            { "nome": "VL_UNIT_ICMS_ST_ESTOQUE_CONV", "tipo": "N", "tam": null, "fixo": false, "dec": 6 },
+            { "nome": "VL_UNIT_FCP_ICMS_ST_ESTOQUE_CONV", "tipo": "N", "tam": null, "fixo": false, "dec": 6 },
+            { "nome": "VL_UNIT_ICMS_ST_CONV_REST", "tipo": "N", "tam": null, "fixo": false, "dec": 6 },
+            { "nome": "VL_UNIT_FCP_ST_CONV_REST", "tipo": "N", "tam": null, "fixo": false, "dec": 6 },
+            { "nome": "VL_UNIT_ICMS_ST_CONV_COMPL", "tipo": "N", "tam": null, "fixo": false, "dec": 6 },
+            { "nome": "VL_UNIT_FCP_ST_CONV_COMPL", "tipo": "N", "tam": null, "fixo": false, "dec": 6 }
+        ]
+    },
+    "campos": {
+        "B440": {
+            "02": { "ref": { "tipo": "N", "tam": 1, "fixo": true, "dec": null }, "_fonte": "IND_OPER é indicador 0/1; a NT imprime N - 02 por desalinhamento da tabela" }
+        },
+        "1300": {
+            "02": { "ref": { "tam": 60, "fixo": false }, "_fonte": "Guia 3.2.2: COD_ITEM C 060; a NT sai sem tamanho" }
+        },
+        "1391": {
+            "21": { "ref": { "nome": "QTD_RESIDUO_DDG" }, "_fonte": "Guia 3.2.3, histórico do leiaute 018: nome partido no PDF" },
+            "22": { "ref": { "nome": "QTD_RESIDUO_WDG" }, "_fonte": "Guia 3.2.3, histórico do leiaute 018: nome partido no PDF" },
+            "23": { "ref": { "nome": "QTD_RESIDUO_CANA" }, "_fonte": "Guia 3.2.3, histórico do leiaute 018: nome partido no PDF" }
+        },
+        "1400": {
+            "02": { "ref": { "nome": "COD_ITEM_IPM" }, "_fonte": "Guia 3.2.2; a NT imprime COD_ITEMIPM" }
+        },
+        "C810": {
+            "06": { "ref": { "tam": null, "fixo": false, "dec": 2 }, "_fonte": "VL_ITEM é valor (N - 02); a trinca sai desalinhada na NT (N 02 -) e no Guia" }
+        },
+        "C880": {
+            "08": { "ref": { "nome": "VL_UNIT_ICMS_OP_ESTOQUE_CONV" }, "_fonte": "Guia 3.2.2 e JSON 017; o nome da NT não existe em nenhum documento" }
+        },
+        "D700": {
+            "07": { "json": { "required": true }, "_fonte": "Guia 3.2.3, histórico 3.1.5 (leiaute 018): SER passa a obrigatório" },
+            "22": { "json": { "required": true }, "_fonte": "Guia 3.2.3, histórico 3.1.5 (leiaute 018): CHV_DOCe passa a obrigatório" },
+            "23": { "json": { "required": true }, "_fonte": "Guia 3.2.3, histórico 3.1.7 (leiaute 019): FIN_DOCe passa a obrigatório" },
+            "24": { "json": { "required": true }, "_fonte": "Guia 3.2.3, histórico 3.1.7 (leiaute 019): TIP_FAT passa a obrigatório" },
+            "29": { "json": { "required": false }, "_fonte": "NUM_DOC_REF só existe em NFCom de substituição ou ajuste (FIN_DOCe 3 ou 4)" }
+        },
+        "E310": {
+            "22": { "ref": { "dec": 2 }, "_fonte": "Guia 3.2.2: DEB_ESP_FCP N - 02; a NT sai sem decimais" }
+        }
+    }
+}

@@ -11,3 +11,7 @@ o PVA da EFD ICMS/IPI aceitar.
 
 Baixados em 12/09/2026. Pendente: texto oficial da NT 2026.001 (leiaute 021),
 não localizado nos portais na data.
+
+`referencia/NNN.json` é a estrutura de cada leiaute extraída desses PDFs pelas
+ferramentas de `tools/leiaute/`. Os JSONs de `storage/layouts/ICMSIPI/vNNN` são
+conferidos contra ela na suíte de testes.
