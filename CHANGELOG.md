@@ -4,6 +4,38 @@ All Notable changes to `sped-efd` will be documented in this file.
 
 Todas as atualizações a partir de 30/05/206 devem observar os principios [Mantendo o CHANGELOG](http://keepachangelog.com/).
 
+## [Fork Artemis] Onda 5 — 2026-09-13
+
+Leiaute 021 da EFD ICMS/IPI (a partir de 01/01/2027, Ato COTEPE/ICMS 69/2026).
+
+### Added
+- `storage/layouts/ICMSIPI/v021` e o 021 no `vigencias.json`: início em
+  01/01/2027, sem fim, versão 1.20 (presumida).
+- Derivado do 020 pelas mudanças que o Guia Prático 3.2.3 registra
+  (`tools/leiaute/deltas/021.json`, cada uma com a fonte), porque o texto da
+  NT 2026.001 não foi localizado. A lista foi cruzada com a extração do próprio
+  Guia 3.2.3: as diferenças de tipo que sobram são divergências NT × Guia já
+  conhecidas no 020, o 1320 e ruído de extração do E310.
+  - CNPJ vira C 14 alfanumérico (`^[0-9A-Z]{12}[0-9]{2}$`) em 0000, 0100, 0150,
+    C115, C175 e 1320. Os campos CNPJ/CPF combinados de C350, C800, D160 e D180
+    aceitam CNPJ alfanumérico ou CPF.
+  - 25 campos de chave de documento viram C 44, com letras só nas posições do CNPJ.
+  - `IND_BENEFICIO` (0, 1, 2, 3, 9) no fim de C197, C597, D197, D737, E111, E220
+    e 1921; `COD_PROD` no C180; `COD_SIT` 09 e 10 no C100.
+- `Common\ChaveAcesso::valida()`: chave só com dígitos segue o dígito
+  verificador da sped-common; chave com CNPJ alfanumérico é conferida no
+  formato. As validações de chave dos registros (ICMS/IPI e Contribuições)
+  passam a usá-la.
+- Ferramentas: o delta aceita `incluir_campos` e `regex` definida pelo
+  leiaute, e gerador e comparador respeitam essa regex.
+- Arquivo de teste do 021 (`tests/fixtures/pva/efd-icms-ipi-021.txt`) e teste
+  linha a linha dos campos novos, inclusive CNPJ alfanumérico recusado no 020.
+
+### Pendente
+- Texto oficial da NT 2026.001, para conferir a derivação.
+- Dígito verificador da chave com CNPJ alfanumérico.
+- Validação no PVA do leiaute 2027, quando for publicado.
+
 ## [Fork Artemis] Onda 3 — 2026-09-13
 
 ### Added

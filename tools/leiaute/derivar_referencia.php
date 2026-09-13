@@ -70,6 +70,16 @@ foreach ($delta['registros'] ?? [] as $reg => $mudanca) {
         }
         $aplicados++;
     }
+    foreach ($mudanca['incluir_campos'] ?? [] as $novo) {
+        foreach ($campos as $c) {
+            if (nomeNormal($c['nome']) === nomeNormal($novo['nome'])) {
+                $erros[] = "$reg: campo {$novo['nome']} já existe para incluir";
+            }
+        }
+        $novo = array_filter($novo, static fn($chave): bool => !str_starts_with((string) $chave, '_'), ARRAY_FILTER_USE_KEY);
+        $campos[] = $novo + ['tam' => null, 'fixo' => false, 'dec' => null, 'valores' => null];
+        $aplicados++;
+    }
     foreach ($campos as $k => $c) {
         $campos[$k]['n'] = $k + 1;
     }

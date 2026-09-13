@@ -2,7 +2,7 @@
 
 namespace NFePHP\EFD\Elements\ICMSIPI;
 
-use NFePHP\Common\Keys;
+use NFePHP\EFD\Common\ChaveAcesso;
 use NFePHP\EFD\Common\Element;
 use stdClass;
 
@@ -29,7 +29,7 @@ class C465 extends Element
         /**
          * Verifica a chave cfe
          */
-        if ($this->std->chv_cfe and !Keys::isValid($this->std->chv_cfe)) {
+        if ($this->std->chv_cfe and !ChaveAcesso::valida((string) $this->std->chv_cfe)) {
             $this->errors[] = "[" . self::REG . "] "
                 . " Dígito verificador incorreto no da Chave "
                 . "do Cupom Fiscal Eletrônico (CHV_CFE)";

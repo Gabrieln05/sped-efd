@@ -1,0 +1,58 @@
+{
+    "COD_AJ": {
+        "type": "string",
+        "regex": "^.{10}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "DESCR_COMPL_AJ": {
+        "type": "string",
+        "regex": "^.*$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "COD_ITEM": {
+        "type": "string",
+        "regex": "^.{1,60}$",
+        "required": false,
+        "info": "",
+        "format": ""
+    },
+    "VL_BC_ICMS": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v2"
+    },
+    "ALIQ_ICMS": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v2"
+    },
+    "VL_ICMS": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v2"
+    },
+    "VL_OUTROS": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v2"
+    },
+    "IND_BENEFICIO": {
+        "type": "numeric",
+        "regex": "^(0|1|2|3|9)$",
+        "required": false,
+        "info": "",
+        "format": ""
+    }
+}

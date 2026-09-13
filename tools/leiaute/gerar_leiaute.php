@@ -105,6 +105,11 @@ function gerarDefinicao(array $campo, ?array $definicao): array
             }
         }
     }
+
+    if (!empty($campo['regex']) && $d['regex'] !== $campo['regex']) {
+        $d['regex'] = (string) $campo['regex'];
+        $mudou[] = 'regex do leiaute';
+    }
     return [$d, $mudou];
 }
 

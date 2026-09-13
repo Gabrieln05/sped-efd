@@ -1,0 +1,9 @@
+{
+    "VL_FCP_OP": {
+        "type": "numeric",
+        "regex": "^\\d+(\\.\\d*)?|\\.\\d+$",
+        "required": false,
+        "info": "",
+        "format": "15v2"
+    }
+}

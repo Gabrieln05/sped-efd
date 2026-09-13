@@ -2,7 +2,7 @@
 
 namespace NFePHP\EFD\Elements\Contribuicoes;
 
-use NFePHP\Common\Keys;
+use NFePHP\EFD\Common\ChaveAcesso;
 use NFePHP\EFD\Common\Element;
 use stdClass;
 
@@ -26,7 +26,7 @@ class A100 extends Element
 
     public function postValidation()
     {
-        if ($this->std->chv_nfse and !Keys::isValid($this->std->chv_nfse)) {
+        if ($this->std->chv_nfse and !ChaveAcesso::valida((string) $this->std->chv_nfse)) {
             $this->errors[] = "[" . self::REG . "] " .
                 " Dígito verificador incorreto no campo campo chave da " .
                 "nota fiscal de serviço eletronica (CHV_NFSE)";

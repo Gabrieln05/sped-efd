@@ -1,0 +1,77 @@
+{
+    "leiaute": "021",
+    "_sobre": "Leiaute 021 (a partir de 01/01/2027) derivado do 020 auditado, aplicando o que o Guia Prático 3.2.3 (06/05/2026, Ato COTEPE/ICMS 69/2026) registra como mudança do leiaute 2027. O texto da NT 2026.001 não foi localizado nos portais; a lista foi cruzada com a extração do próprio Guia 3.2.3 (tools/leiaute/extrair_referencia.php com '-' no lugar da NT). CNPJ passa a aceitar o formato alfanumérico da IN RFB nº 2.229/2024 (12 posições alfanuméricas + 2 dígitos); chave de documento aceita letras só nas posições do CNPJ.",
+    "registros": {
+        "0000": { "campos": { "CNPJ": { "tipo": "C", "tam": 14, "fixo": true, "regex": "^[0-9A-Z]{12}[0-9]{2}$" } }, "_fonte": "Guia 3.2.3: CNPJ de N para C 014*" },
+        "0100": { "campos": { "CNPJ": { "tipo": "C", "tam": 14, "fixo": true, "regex": "^[0-9A-Z]{12}[0-9]{2}$" } }, "_fonte": "Guia 3.2.3: CNPJ de N para C 014*" },
+        "0150": { "campos": { "CNPJ": { "tipo": "C", "tam": 14, "fixo": true, "regex": "^[0-9A-Z]{12}[0-9]{2}$" } }, "_fonte": "Guia 3.2.3: CNPJ de N para C 014*" },
+        "1320": { "campos": { "CNPJ_INTERV": { "tipo": "C", "tam": 14, "fixo": true, "regex": "^[0-9A-Z]{12}[0-9]{2}$" } }, "_fonte": "Guia 3.2.3, lista de mudanças do leiaute 2027 (a linha do campo sai sem tamanho na tabela do PDF)" },
+        "C115": {
+            "campos": {
+                "CNPJ_COL": { "tipo": "C", "tam": 14, "fixo": true, "regex": "^[0-9A-Z]{12}[0-9]{2}$" },
+                "CNPJ_ENTG": { "tipo": "C", "tam": 14, "fixo": true, "regex": "^[0-9A-Z]{12}[0-9]{2}$" }
+            },
+            "_fonte": "Guia 3.2.3: CNPJ de N para C 014*"
+        },
+        "C175": { "campos": { "CNPJ": { "tipo": "C", "tam": 14, "fixo": true, "regex": "^[0-9A-Z]{12}[0-9]{2}$" } }, "_fonte": "Guia 3.2.3: CNPJ de N para C 014*" },
+        "C350": { "campos": { "CNPJ_CPF": { "tipo": "C", "tam": 14, "fixo": false, "regex": "^([0-9A-Z]{12}[0-9]{2}|[0-9]{11})$" } }, "_fonte": "extração do Guia 3.2.3: CNPJ_CPF de N para C 014" },
+        "C800": { "campos": {
+                "CNPJ_CPF": { "tipo": "C", "tam": 14, "fixo": false, "regex": "^([0-9A-Z]{12}[0-9]{2}|[0-9]{11})$" },
+                "CHV_CFE": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" }
+            }, "_fonte": "Guia 3.2.3: CNPJ_CPF C 14 e CHV_CFE C 044" },
+        "D160": { "campos": {
+                "CNPJ_CPF_REM": { "tipo": "C", "tam": 14, "fixo": false, "regex": "^([0-9A-Z]{12}[0-9]{2}|[0-9]{11})$" },
+                "CNPJ_CPF_DEST": { "tipo": "C", "tam": 14, "fixo": false, "regex": "^([0-9A-Z]{12}[0-9]{2}|[0-9]{11})$" }
+            }, "_fonte": "extração do Guia 3.2.3: campos CNPJ/CPF de N para C 014" },
+        "D180": { "campos": {
+                "CNPJ_CPF_EMIT": { "tipo": "C", "tam": 14, "fixo": false, "regex": "^([0-9A-Z]{12}[0-9]{2}|[0-9]{11})$" },
+                "CNPJ_CPF_TOM": { "tipo": "C", "tam": 14, "fixo": false, "regex": "^([0-9A-Z]{12}[0-9]{2}|[0-9]{11})$" }
+            }, "_fonte": "extração do Guia 3.2.3: campos CNPJ/CPF de N para C 014" },
+        "1105": { "campos": { "CHV_NFE": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "1110": { "campos": { "CHV_NFE": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "1210": { "campos": { "CHV_DOCe": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "1923": { "campos": { "CHV_DOCe": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "B020": { "campos": { "CHV_NFE": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "C100": { "campos": {
+                "CHV_NFE": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" },
+                "COD_SIT": { "valores": ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10"] }
+            }, "_fonte": "Guia 3.2.3: CHV_NFE de N para C 044*; COD_SIT 09 (documento com redução de valores ou quantidades) e 10 (escrituração extemporânea dele) na Tabela 4.1.2" },
+        "C113": { "campos": { "CHV_DOCe": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "C116": { "campos": { "CHV_CFE": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "C176": { "campos": {
+                "CHAVE_NFE_ULT_E": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" },
+                "CHAVE_NFE_RET": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" }
+            }, "_fonte": "Guia 3.2.3: CHAVE_NFE_ULT_E e CHAVE_NFE_RET C 044*" },
+        "C181": { "campos": { "CHV_DFE_SAIDA": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "C186": { "campos": { "CHV_DFE_ENTRADA": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "C465": { "campos": { "CHV_CFE": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "C500": { "campos": {
+                "CHV_DOCe": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" },
+                "CHV_DOCe_REF": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" }
+            }, "_fonte": "Guia 3.2.3, lista de mudanças do leiaute 2027 (tabela do C500 não extraída)" },
+        "D100": { "campos": {
+                "CHV_CTE": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" },
+                "CHV_CTE_REF": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" }
+            }, "_fonte": "Guia 3.2.3: chaves de N para C 044*" },
+        "D700": { "campos": {
+                "CHV_DOCe": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" },
+                "CHV_DOCe_REF": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" }
+            }, "_fonte": "Guia 3.2.3: chaves de N para C 044*" },
+        "E113": { "campos": { "CHV_DOCe": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "E240": { "campos": { "CHV_DOCe": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "E313": { "campos": { "CHV_DOCe": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "E531": { "campos": { "CHV_NFE": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "G130": { "campos": { "CHV_NFE_CTE": { "tipo": "C", "tam": 44, "fixo": true, "regex": "^[0-9]{6}[0-9A-Z]{12}[0-9]{26}$" } }, "_fonte": "Guia 3.2.3: chave de documento de N para C 044*" },
+        "C180": {
+            "incluir_campos": [ { "nome": "COD_PROD", "tipo": "C", "tam": 60, "fixo": false, "dec": null } ],
+            "_fonte": "Guia 3.2.3: campo 12 COD_PROD (código do produto na NF-e do fornecedor), C 60, OC"
+        },
+        "C197": { "incluir_campos": [ { "nome": "IND_BENEFICIO", "tipo": "N", "tam": 1, "fixo": false, "dec": null, "valores": ["0", "1", "2", "3", "9"] } ], "_fonte": "Guia 3.2.3: campo 09 IND_BENEFICIO (LC 214/2025, arts. 384 a 405)" },
+        "C597": { "incluir_campos": [ { "nome": "IND_BENEFICIO", "tipo": "N", "tam": 1, "fixo": false, "dec": null, "valores": ["0", "1", "2", "3", "9"] } ], "_fonte": "Guia 3.2.3: campo 09 IND_BENEFICIO" },
+        "D197": { "incluir_campos": [ { "nome": "IND_BENEFICIO", "tipo": "N", "tam": 1, "fixo": false, "dec": null, "valores": ["0", "1", "2", "3", "9"] } ], "_fonte": "Guia 3.2.3: campo 09 IND_BENEFICIO" },
+        "D737": { "incluir_campos": [ { "nome": "IND_BENEFICIO", "tipo": "N", "tam": 1, "fixo": false, "dec": null, "valores": ["0", "1", "2", "3", "9"] } ], "_fonte": "Guia 3.2.3: campo 09 IND_BENEFICIO" },
+        "E111": { "incluir_campos": [ { "nome": "IND_BENEFICIO", "tipo": "N", "tam": 1, "fixo": false, "dec": null, "valores": ["0", "1", "2", "3", "9"] } ], "_fonte": "Guia 3.2.3: campo 05 IND_BENEFICIO" },
+        "E220": { "incluir_campos": [ { "nome": "IND_BENEFICIO", "tipo": "N", "tam": 1, "fixo": false, "dec": null, "valores": ["0", "1", "2", "3", "9"] } ], "_fonte": "Guia 3.2.3: campo 05 IND_BENEFICIO (tabela do E220 não extraída)" },
+        "1921": { "incluir_campos": [ { "nome": "IND_BENEFICIO", "tipo": "N", "tam": 1, "fixo": false, "dec": null, "valores": ["0", "1", "2", "3", "9"] } ], "_fonte": "Guia 3.2.3: campo 05 IND_BENEFICIO" }
+    }
+}

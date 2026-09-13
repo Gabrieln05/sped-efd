@@ -4,7 +4,7 @@ namespace NFePHP\EFD\Elements\Contribuicoes;
 
 use NFePHP\EFD\Common\Element;
 use stdClass;
-use NFePHP\Common\Keys;
+use NFePHP\EFD\Common\ChaveAcesso;
 
 class Z1101 extends Element
 {
@@ -26,7 +26,7 @@ class Z1101 extends Element
 
     public function postValidation()
     {
-        if (!empty($this->std->chv_nfe) and !Keys::isValid($this->std->chv_nfe)) {
+        if (!empty($this->std->chv_nfe) and !ChaveAcesso::valida((string) $this->std->chv_nfe)) {
             $this->errors[] = "[" . self::REG . "] " .
                 " Dígito verificador incorreto no campo chave do " .
                 " campo CHV_NFE";

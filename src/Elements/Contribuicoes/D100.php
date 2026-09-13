@@ -2,7 +2,7 @@
 
 namespace NFePHP\EFD\Elements\Contribuicoes;
 
-use NFePHP\Common\Keys;
+use NFePHP\EFD\Common\ChaveAcesso;
 use NFePHP\EFD\Common\Element;
 use stdClass;
 
@@ -26,13 +26,13 @@ class D100 extends Element
 
     public function postValidation()
     {
-        if (!empty($this->std->chv_cte) and !Keys::isValid($this->std->chv_cte)) {
+        if (!empty($this->std->chv_cte) and !ChaveAcesso::valida((string) $this->std->chv_cte)) {
             $this->errors[] = "[" . self::REG . "] " .
                 " Dígito verificador incorreto no campo chave do " .
                 " campo CHV_CTE";
         }
 
-        if (!empty($this->std->chv_cte_ref) and !Keys::isValid($this->std->chv_cte_ref)) {
+        if (!empty($this->std->chv_cte_ref) and !ChaveAcesso::valida((string) $this->std->chv_cte_ref)) {
             $this->errors[] = "[" . self::REG . "] " .
                 " Dígito verificador incorreto no campo chave do " .
                 " campo CHV_CTE_REF";

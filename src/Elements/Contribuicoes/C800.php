@@ -2,7 +2,7 @@
 
 namespace NFePHP\EFD\Elements\Contribuicoes;
 
-use NFePHP\Common\Keys;
+use NFePHP\EFD\Common\ChaveAcesso;
 use NFePHP\EFD\Common\Element;
 use stdClass;
 
@@ -26,7 +26,7 @@ class C800 extends Element
 
     public function postValidation()
     {
-        if (!empty($this->std->chv_cfe) and !Keys::isValid($this->std->chv_cfe)) {
+        if (!empty($this->std->chv_cfe) and !ChaveAcesso::valida((string) $this->std->chv_cfe)) {
             $this->errors[] = "[" . self::REG . "] " .
                 " Dígito verificador incorreto no campo chave do " .
                 "cupom fiscal eletronica (CHV_CFE)";

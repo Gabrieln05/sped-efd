@@ -44,10 +44,19 @@ php tools/leiaute/comparar.php docs/leiautes/referencia/019.json storage/layouts
     --ajustes=tools/leiaute/ajustes/019.json
 ```
 
-`deltas/NNN.json` diz, por registro, os campos a remover (`remover_campos`) e
-os atributos a trocar (`campos`, pelo nome), cada mudança com `_fonte`. O
-gerador não aperta regex que já aceita os valores válidos; restrição que o
-leiaute anterior não tinha (ex.: DUIMP no C120) entra como ajuste `json`.
+`deltas/NNN.json` diz, por registro, os campos a remover (`remover_campos`),
+a incluir no fim (`incluir_campos`) e os atributos a trocar (`campos`, pelo
+nome), cada mudança com `_fonte`. O gerador não aperta regex que já aceita os
+valores válidos; restrição que o leiaute anterior não tinha (ex.: DUIMP no
+C120) entra como ajuste `json`.
+
+A derivação também serve para frente. O 021 sai do 020 pelas mudanças do Guia
+Prático 3.2.3, porque o texto da NT 2026.001 não estava publicado. Um atributo
+`regex` no delta (CNPJ alfanumérico, chave com letras) prevalece no gerador e
+é conferido pelo comparador. Para achar mudança esquecida, cruze a referência
+derivada com a extração do Guia do leiaute novo
+(`extrair_referencia.php 021 - guia.txt ...`): o que sobrar tem de ser
+divergência conhecida ou ruído de extração.
 
 ## Como a extração funciona
 

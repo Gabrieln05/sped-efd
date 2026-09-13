@@ -2,7 +2,7 @@
 
 namespace NFePHP\EFD\Elements\ICMSIPI;
 
-use NFePHP\Common\Keys;
+use NFePHP\EFD\Common\ChaveAcesso;
 use NFePHP\EFD\Common\Element;
 use stdClass;
 
@@ -90,7 +90,7 @@ class D100 extends Element
         /*
          * Faz a verificação do digito verificador do campo
          */
-        if (!Keys::isValid($this->std->chv_cte)) {
+        if (!ChaveAcesso::valida((string) $this->std->chv_cte)) {
             $this->errors[] = "[" . self::REG . "] "
                 . " Dígito verificador incorreto no campo campo chave do "
                 . "conhecimento de transporte eletrônico (CHV_CTE)";

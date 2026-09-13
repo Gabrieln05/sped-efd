@@ -2,7 +2,7 @@
 
 namespace NFePHP\EFD\Elements\ICMSIPI;
 
-use NFePHP\Common\Keys;
+use NFePHP\EFD\Common\ChaveAcesso;
 use NFePHP\EFD\Common\Element;
 use stdClass;
 
@@ -101,7 +101,7 @@ class C176 extends Element
             $this->errors[] = "[" . self::REG . "] " .
                 "Quando o campo COD_RESP_RET é igual a '3', o campo COD_DA é obrigatório";
         }
-        if ($this->std->chave_nfe_ret and !Keys::isValid($this->std->chave_nfe_ret)) {
+        if ($this->std->chave_nfe_ret and !ChaveAcesso::valida((string) $this->std->chave_nfe_ret)) {
             $this->errors[] = "[" . self::REG . "] " .
                 " Dígito verificador incorreto no campo campo chave da " .
                 "nota fiscal eletronica (CHAVE_NFE_RET)";

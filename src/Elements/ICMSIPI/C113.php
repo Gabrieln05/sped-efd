@@ -2,7 +2,7 @@
 
 namespace NFePHP\EFD\Elements\ICMSIPI;
 
-use NFePHP\Common\Keys;
+use NFePHP\EFD\Common\ChaveAcesso;
 use NFePHP\EFD\Common\Element;
 use stdClass;
 
@@ -39,7 +39,7 @@ class C113 extends Element
                 "O código do documento fiscal (COD_MOD) deve ser diferente de 2D, 02 ou 2E";
         }
         if ($this->std->cod_mod == 57) {
-            if (!Keys::isValid($this->std->chv_doce)) {
+            if (!ChaveAcesso::valida((string) $this->std->chv_doce)) {
                 $this->errors[] = "[" . self::REG . "] " .
                     "Chave do cocumento (CHV_DOCe) inválida";
             }

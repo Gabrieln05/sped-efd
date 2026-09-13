@@ -4,7 +4,7 @@ namespace NFePHP\EFD\Elements\ICMSIPI;
 
 use NFePHP\EFD\Common\Element;
 use stdClass;
-use NFePHP\Common\Keys;
+use NFePHP\EFD\Common\ChaveAcesso;
 
 class G130 extends Element
 {
@@ -26,7 +26,7 @@ class G130 extends Element
 
     public function postValidation()
     {
-        if (!empty($this->std->chv_nfe_cte) and !Keys::isValid($this->std->chv_nfe_cte)) {
+        if (!empty($this->std->chv_nfe_cte) and !ChaveAcesso::valida((string) $this->std->chv_nfe_cte)) {
             $this->errors[] = "[" . self::REG . "] "
                 . " Dígito verificador incorreto no campo chave do "
                 . " campo CHV_NFE_CTE";

@@ -2,7 +2,7 @@
 
 namespace NFePHP\EFD\Elements\ICMSIPI;
 
-use NFePHP\Common\Keys;
+use NFePHP\EFD\Common\ChaveAcesso;
 use NFePHP\EFD\Common\Element;
 use stdClass;
 
@@ -30,7 +30,7 @@ class C116 extends Element
         /**
          * Verifica a chave do cupom fiscal eletronico
          */
-        if (!empty($this->std->chv_cfe) and !Keys::isValid($this->std->chv_cfe)) {
+        if (!empty($this->std->chv_cfe) and !ChaveAcesso::valida((string) $this->std->chv_cfe)) {
             $this->errors[] = "[" . self::REG . "] " .
                 " Dígito verificador incorreto no campo campo chave do " .
                 "cupom fiscal eletronico (CHV_CFE)";

@@ -31,7 +31,7 @@ use stdClass;
  */
 final class ArquivoPva
 {
-    private const ANO_DO_LEIAUTE = ['018' => 2024, '019' => 2025, '020' => 2026];
+    private const ANO_DO_LEIAUTE = ['018' => 2024, '019' => 2025, '020' => 2026, '021' => 2027];
 
     /**
      * @return list<string>

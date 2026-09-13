@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Funções comuns às ferramentas de leiaute (comparar.php, gerar_leiaute.php) e
- * ao teste que confere os JSONs de cada leiaute auditado contra a referência.
+ * Funções comuns às ferramentas de leiaute (comparar.php, gerar_leiaute.php,
+ * derivar_referencia.php) e ao teste que confere os JSONs de cada leiaute
+ * auditado contra a referência.
  */
 
 declare(strict_types=1);
@@ -74,12 +75,16 @@ function tamanhoMaximo(string $regex): ?int
 }
 
 /**
- * Regex da biblioteca para o campo, a partir do leiaute.
+ * Regex da biblioteca para o campo, a partir do leiaute. Uma regex definida na
+ * própria referência (ex.: CNPJ alfanumérico) prevalece.
  *
  * @param array<string, mixed> $campo
  */
 function regexDoCampo(array $campo): string
 {
+    if (!empty($campo['regex'])) {
+        return (string) $campo['regex'];
+    }
     if (!empty($campo['valores'])) {
         return '^(' . implode('|', array_map(static fn(string $v): string => preg_quote($v, '/'), $campo['valores'])) . ')$';
     }
@@ -154,8 +159,8 @@ function registrosComAjustes(array $referencia, array $ajustes): array
  * Confere o que muda o arquivo gerado ou a validação: registro sem JSON e JSON
  * sem registro; campos faltando, sobrando ou com outro nome; campo C gravado
  * como número; casas decimais do "format"; tamanho máximo (quando a regex é
- * simples); e se a regex aceita cada valor válido. Campo N gravado como string
- * não é divergência: a saída é a mesma.
+ * simples); se a regex aceita cada valor válido; e a regex definida pela
+ * referência. Campo N gravado como string não é divergência: a saída é a mesma.
  *
  * @param array<string, array<string, mixed>> $registros
  * @param array<string, string> $semAuditoria registros fora da conferência
@@ -229,6 +234,9 @@ function compararLeiaute(array $registros, string $pasta, array $semAuditoria = 
             $maximo = tamanhoMaximo($regex);
             if ($c['tam'] !== null && $maximo !== null && $maximo !== $c['tam']) {
                 $anota($reg, 'tamanho', "$rotulo: tamanho {$c['tam']}, regex '$regex' aceita até $maximo");
+            }
+            if (!empty($c['regex']) && $regex !== $c['regex']) {
+                $anota($reg, 'regex do leiaute', "$rotulo: regex '$regex', o leiaute pede '{$c['regex']}'");
             }
             if (!empty($c['valores']) && $regex !== '') {
                 $recusados = array_values(array_filter(
